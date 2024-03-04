@@ -21,15 +21,14 @@
 html, body {
     background-color: var(--color5);
     height: 100vh;
-    width: 100vw;
+    /* width: 100vw; */
     font-family: var(--font1);
 }
 
 /* hide horizontal scoll */
-html, body {
+/* html, body {
     overflow-x: auto;
-}
-
+} */
 
 header {
     background: linear-gradient(to top, var(--color5), rgba(255, 255, 255, 0.044)), url("../assets/pexels-photo-13618459.jpeg");
@@ -40,77 +39,130 @@ header {
     background-size: cover;
 }
 
-header > div#nav {
-    width: 80%;
-    margin: auto;
+header div#nav {
+    width: 100%;
+    
+    overflow: hidden;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color4);
 }
 
-
-header > div#nav > ul{
-    border-bottom: var(--color2) 2px solid;
+header div#nav ul{
+    border-bottom: var(--color4) 2px solid; 
     text-align: center;
     text-transform: uppercase;
-    padding: 20px;
+    padding: 25px;
 }
 
 header a {
     text-decoration: none;
+    padding: 25px 20px;
+    color: white;
+
 }
 
 header div#nav a:hover {
     border-bottom: var(--color6) 2px solid;
-    padding-bottom: 20px;
+    padding-bottom: 25px;
     color: var(--color6);
 }
-
-
-/* header > div#nav > ul:hover::before {
-    border-bottom: var(--color2) 1px solid;
-} */
 
 header li {
     display: inline;
 }
 
-header li {
-    color: var(--color1);
-    padding: 0px 20px 0px 0px;
+header div#home {
+    padding-top: 200px;
 }
 
-header img {
+header img#me-img {
     display: block;
     margin: auto;
-    
-    margin-top: 150px;
-    width: 250px;
+
+    max-width: 250px;
+    max-height: 250px;
     border-radius: 50%;
     border: 8px solid white;
 }
 
-header h1, h2, p {
+header h1, h2, h3, p {
     text-align: center;
     color: var(--color1);
 }
 
-/* header p {
-    margin: auto;
-    width: 600px;
-    border-bottom: 1px var(--color2) solid;
-    padding-bottom: 10px;
-} */
-
-header h1 {
+h1 {
     font-size: 5em;
     /* margin-top: 150px; */
     padding-bottom: 20px;
+    color: var(--color1);
 }
+
+h3 {
+    font-weight: bolder;
+}
+
+header p {
+    margin: auto;
+    max-width: 600px;
+    border-bottom: 1px var(--color2) solid;
+    padding: 10px 0px;
+    color: var(--color1);
+}
+
 
 /* 
 header > div#header1 > ul > li{
     border-bottom: var(--color2) 1px solid;
 } */
 
+/* header section#certifications {
+    height: 100vh;
+} */
 
-main > article > p, main > article > h1 {
+
+header div.cert-container {
+    margin: auto;
+    text-align: center;
+    margin-top: 50px;
+    max-width: 600px;
+}
+
+
+header img.cert {
+    margin: 15px 7px;
+    width: 17%;
+}
+
+
+header div.cert-container:hover img:not(:hover) {
+    filter: blur(2px);
+    z-index: 0;
+    position: relative;
+}
+
+header div.cert-container:hover img:hover {
+    /* transform: translate(-15px, -15px);
+    filter: drop-shadow(15px 15px 0 var(--color4)); */
+    transform: scale(1.2);
+    position: relative;
+    z-index: 1;
+}
+
+article p, article h1 {
     line-height: 1.7em;
+    max-width: 1000px;
+    margin: auto;
+    text-align: center;
+}
+
+article p {
+    font-size: 1.2em;
+}
+
+article h3 {
+    padding-top: 80px;
+    padding-bottom: 30px;
+    text-align: center;
 }
