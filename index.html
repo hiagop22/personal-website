@@ -7,14 +7,16 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles/style.css">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
     <header>
+        <section id="home">
             <div id="nav">
                 <ul>
-                <li><a href="#home">home</a></li>
-                <li><a href="#about">about</a></li>
-                <li><a href="#">skills</a></li>
+                <li><a id="nav-home" href="#home">home</a></li>
+                <li><a id="nav-about" href="#about">about</a></li>
+                <li><a id="nav-skills" href="#skills">skills</a></li>
                 <li><a href="#">projects</a></li>
                 <li><a href="#">timeline</a></li>
                 <li><a href="#">resume</a></li>
@@ -49,14 +51,40 @@
                 </ul>
                 
             </div>
+        </section>
     </header>
     <main>
         <article>
             <section id="about">
                 <h3>About</h3>
-                
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus nesciunt reprehenderit odit quas. Dignissimos suscipit aliquid exercitationem eius! Accusantium alias aut est qui asperiores? Accusamus eos reprehenderit officia sit ab!
+                </p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam asperiores laudantium in labore quibusdam cumque sapiente accusamus perspiciatis commodi facere, eos, eveniet voluptatem perferendis. Accusantium vel iste totam? Eligendi, nam?
+                </p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam asperiores laudantium in labore quibusdam cumque sapiente accusamus perspiciatis commodi facere, eos, eveniet voluptatem perferendis. Accusantium vel iste totam? Eligendi, nam?
+                </p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam asperiores laudantium in labore quibusdam cumque sapiente accusamus perspiciatis commodi facere, eos, eveniet voluptatem perferendis. Accusantium vel iste totam? Eligendi, nam?
+                </p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam asperiores laudantium in labore quibusdam cumque sapiente accusamus perspiciatis commodi facere, eos, eveniet voluptatem perferendis. Accusantium vel iste totam? Eligendi, nam?
+                </p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam asperiores laudantium in labore quibusdam cumque sapiente accusamus perspiciatis commodi facere, eos, eveniet voluptatem perferendis. Accusantium vel iste totam? Eligendi, nam?
+                </p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam asperiores laudantium in labore quibusdam cumque sapiente accusamus perspiciatis commodi facere, eos, eveniet voluptatem perferendis. Accusantium vel iste totam? Eligendi, nam?
+                </p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam asperiores laudantium in labore quibusdam cumque sapiente accusamus perspiciatis commodi facere, eos, eveniet voluptatem perferendis. Accusantium vel iste totam? Eligendi, nam?
+                </p><p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam asperiores laudantium in labore quibusdam cumque sapiente accusamus perspiciatis commodi facere, eos, eveniet voluptatem perferendis. Accusantium vel iste totam? Eligendi, nam?
+                </p><p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam asperiores laudantium in labore quibusdam cumque sapiente accusamus perspiciatis commodi facere, eos, eveniet voluptatem perferendis. Accusantium vel iste totam? Eligendi, nam?
+                </p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam asperiores laudantium in labore quibusdam cumque sapiente accusamus perspiciatis commodi facere, eos, eveniet voluptatem perferendis. Accusantium vel iste totam? Eligendi, nam?
+                </p><p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam asperiores laudantium in labore quibusdam cumque sapiente accusamus perspiciatis commodi facere, eos, eveniet voluptatem perferendis. Accusantium vel iste totam? Eligendi, nam?
+                </p><p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam asperiores laudantium in labore quibusdam cumque sapiente accusamus perspiciatis commodi facere, eos, eveniet voluptatem perferendis. Accusantium vel iste totam? Eligendi, nam?
+                </p><p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam asperiores laudantium in labore quibusdam cumque sapiente accusamus perspiciatis commodi facere, eos, eveniet voluptatem perferendis. Accusantium vel iste totam? Eligendi, nam?
+                </p><p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam asperiores laudantium in labore quibusdam cumque sapiente accusamus perspiciatis commodi facere, eos, eveniet voluptatem perferendis. Accusantium vel iste totam? Eligendi, nam?
+                </p><p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam asperiores laudantium in labore quibusdam cumque sapiente accusamus perspiciatis commodi facere, eos, eveniet voluptatem perferendis. Accusantium vel iste totam? Eligendi, nam?
+                </p>
             </section>
-
+            <section id="skills">
             <p>
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus nesciunt reprehenderit odit quas. Dignissimos suscipit aliquid exercitationem eius! Accusantium alias aut est qui asperiores? Accusamus eos reprehenderit officia sit ab!
             </p>
@@ -83,6 +111,7 @@
             </p><p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam asperiores laudantium in labore quibusdam cumque sapiente accusamus perspiciatis commodi facere, eos, eveniet voluptatem perferendis. Accusantium vel iste totam? Eligendi, nam?
             </p><p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam asperiores laudantium in labore quibusdam cumque sapiente accusamus perspiciatis commodi facere, eos, eveniet voluptatem perferendis. Accusantium vel iste totam? Eligendi, nam?
             </p>
+        </section>
         </article>
     </main>
     <footer>
@@ -90,15 +119,21 @@
     </footer>
 
     <script>
+        $(document).scroll(function () {
 
-        document.addEventListener("DOMContentLoaded", highligh_menu())
+            $('section').each(function () {
+                if($(this).position().top <= $(document).scrollTop() && ($(this).position().top + $(this).outerHeight()) > $(document).scrollTop()) {
+                    const page = $(this).attr('id');
+                    $("#nav a" + "#nav-" + page).addClass("menu-active");
+                    console.log("#nav a" + "#nav-" + page);
+                }
+                else{
+                    const page = $(this).attr('id');
+                    $("#nav a" + "#nav-" + page).removeClass("menu-active");
+                }
+        });
+    });
 
-        function highligh_menu() {
-            const page = location.href.split("#").pop()
-
-            console.log(page)
-            console.log("entrou aqui")
-        }
     </script>
 
 </body>

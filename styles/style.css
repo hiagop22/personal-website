@@ -47,6 +47,8 @@ header div#nav {
     left: 50%;
     transform: translateX(-50%);
     background-color: var(--color4);
+
+    z-index: 2;
 }
 
 header div#nav ul{
@@ -60,10 +62,15 @@ header a {
     text-decoration: none;
     padding: 25px 20px;
     color: white;
-
 }
 
 header div#nav a:hover {
+    border-bottom: var(--color6) 2px solid;
+    padding-bottom: 25px;
+    color: var(--color6);
+}
+
+header div#nav a.menu-active {
     border-bottom: var(--color6) 2px solid;
     padding-bottom: 25px;
     color: var(--color6);
