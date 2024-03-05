@@ -46,19 +46,35 @@ header div#nav {
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
-    background-color: var(--color4);
 
     z-index: 2;
 }
 
-header div#nav ul{
+.menu-color {
+    background-color: var(--color4);
+    transition: 0.5s;
+}
+
+.color-js {
     border-bottom: var(--color4) 2px solid; 
+    transition: 0.5s;
+}
+
+.non-color-js {
+    margin: auto;
+    text-align: center;
+    width: 60%;
+    border-bottom: var(--color2) 2px solid; 
+}
+
+header div#nav ul{
+    /* border-bottom: var(--color4) 2px solid;  */
     text-align: center;
     text-transform: uppercase;
     padding: 25px;
 }
 
-header a {
+header div#nav a {
     text-decoration: none;
     padding: 25px 20px;
     color: white;
@@ -80,8 +96,8 @@ header li {
     display: inline;
 }
 
-header div#home {
-    padding-top: 200px;
+header div#div-home {
+    padding-top: 50px;
 }
 
 header img#me-img {
@@ -92,6 +108,7 @@ header img#me-img {
     max-height: 250px;
     border-radius: 50%;
     border: 8px solid white;
+
 }
 
 header h1, h2, h3, p {
@@ -119,27 +136,20 @@ header p {
 }
 
 
-/* 
-header > div#header1 > ul > li{
-    border-bottom: var(--color2) 1px solid;
-} */
-
-/* header section#certifications {
-    height: 100vh;
-} */
-
 
 header div.cert-container {
     margin: auto;
     text-align: center;
     margin-top: 50px;
-    max-width: 600px;
+    max-width: 370px;
+    /* background-color: white; */
 }
 
 
 header img.cert {
-    margin: 15px 7px;
-    width: 17%;
+    padding: 15px 10px;
+    width: 100px;
+    /* background-color: black; */
 }
 
 
@@ -172,4 +182,32 @@ article h3 {
     padding-top: 80px;
     padding-bottom: 30px;
     text-align: center;
+}
+
+section#about {
+    margin: auto;
+    display: block;
+    width: 80%;
+}
+
+section#about div#img-about {
+    margin-top: 80px;
+    display: inline;
+    background: url("../assets/tower2.jpg") no-repeat;
+    background-position: center center;
+    background-color: white;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+
+section#about div#content-about {
+    width: 30%;
+    display: inline;
+}
+
+section#skills {
+    display: block;
+    margin: auto;
+    width: 50%;
 }
