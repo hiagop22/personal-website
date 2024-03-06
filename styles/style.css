@@ -184,49 +184,69 @@ article h3 {
     text-align: center;
 }
 
-div#about-elements {
-    position: relative;
-    margin: auto;
-    display: flex;
-    max-width: 1000px;
+/* div#about-elements { */
+    /* position: relative; */
+    /* margin: auto; */
+    /* display: flex; */
+    /* max-width: 1000px; */
     /* background-color: burlywood; */
-}
+/* } */
 
 section#about {
     overflow-x: hidden;
 }
 
-div#about-back {
+/* div#about-back {
     position: absolute;
-    /* top */
     background-color: white;
-    height: 570px;
+    height: 600px;
     width: 10000px;
     top: 50%;
     left: -1000px;
     z-index: -1;
 
     transform: translateY(-50%);
-}
-
+} */
+/* 
 section#about div#img-about {
     background: url("../assets/church.jpeg") no-repeat;
     background-position: center center;
     background-color: white;
     background-size: cover;
     width: 35%;
-    height: 600px;
+    height: 630px;
 
 
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.332);
-    border-bottom: var(--color3) 10px solid;
+    border-bottom: var(--color3) 10px solid; 
 
     margin-left: 20px;
-    filter: saturate(80%);
+    filter: grayscale(50%);
+} */
+
+section#about {
+    background: black url("../assets/national-museum.jpg") no-repeat fixed;
+    background-position: center center;
+    background-size: cover;
+
+    
 }
 
 section#about div#content-about {
+    /* margin-top: 40px; */
+    /* margin-left: 20px; */
+    background-color: #ffffffce;
     width: 60%;
+    margin: auto;
+    text-align: center;
+    /* margin-top: 20px; */
+    /* margin-bottom: 20px; */
+    /* border-radius: 50px; */
+    /* box-shadow: 20px 20px 15px rgba(0, 0, 0, 0.213); */
+    /* box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.24),
+                0px 0px 5px rgba(0, 0, 0, 0.24); */
+    height: 100vh;
+    /* z-index: 2; */
 }
 
 section#about p, section#about h3 {
