@@ -252,7 +252,7 @@ section#skills {
     display: block;
     margin: auto;
     width: 70%;
-    background-color: green;
+    /* background-color: green; */
 }
 
 section#skills div#content-skills {
