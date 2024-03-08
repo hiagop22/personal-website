@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AIH</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <link rel="stylesheet" href="styles/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+  <app-root></app-root>
+</body>
+
+<script>
+  $(document).scroll(function () {
+
+      $('section').each(function () {
+          if($(this).position().top <= $(document).scrollTop() && ($(this).position().top + $(this).outerHeight()) > $(document).scrollTop()) {
+              const page = $(this).attr('id');
+              $("#nav a" + "#nav-" + page).addClass("menu-active");
+              console.log("#nav a" + "#nav-" + page);
+              console.log(page)
+              if(page != "above") {
+                  $("#nav").addClass("menu-color")
+                  $("#nav ul").removeClass("non-color-js")
+                  $("#nav ul").addClass("color-js")
+              }
+              else{
+                  $("#nav").removeClass("menu-color")
+                  $("#nav ul").removeClass("color-js")
+                  $("#nav ul").addClass("non-color-js")
+              }
+          }
+          else{
+              const page = $(this).attr('id');
+              $("#nav a" + "#nav-" + page).removeClass("menu-active");
+          }
+  });
+});
+
+</script>
+</html>

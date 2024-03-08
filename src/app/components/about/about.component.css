@@ -1,0 +1,49 @@
+h3 {
+    color: black;
+}
+
+section {
+    display: flex;
+    background-color: rgb(207, 206, 206);
+    background: url("../../../assets/national-museum.jpg") no-repeat fixed;
+    background-position: center center;
+    background-size: cover;
+
+}
+
+section div#me-img2{
+    width: 30%;
+    float: left;
+    margin-left: 80px;
+    margin-top: 80px;
+    background-color: blue;
+    background: url("../../../assets/me.jpg") no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+
+    height: 200px;
+    width: 200px;
+}
+
+
+section div.content {
+    float: right;
+    /* margin-top: 40px; */
+    /* margin-left: 20px; */
+    background-color: #ffffffce;
+    /* width: 60%;
+    margin: auto;
+    text-align: center; */
+    /* margin-top: 20px; */
+    /* margin-bottom: 20px; */
+    /* border-radius: 50px; */
+    /* box-shadow: 20px 20px 15px rgba(0, 0, 0, 0.213); */
+    /* box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.24),
+                0px 0px 5px rgba(0, 0, 0, 0.24); */
+    height: 100vh;
+    /* z-index: 2; */
+}
+
+section p, section h3 {
+    color: black;
+}
