@@ -10,8 +10,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
-    <header>
-        <section id="above">
+    <header style="height: 100vh;">
+        <section id="above" style="padding-bottom: 50px">
         <div id="nav">
             <ul>
             <li><a id="nav-home" href="#above">home</a></li>
@@ -23,10 +23,8 @@
             <li><a href="#">contact</a></li>
             </ul>
         </div>
-        <div style="padding-bottom: 50px; "></div>
         </section>
-        <section id="home">
-            <!-- <div id="content-home" style="padding-bottom: 200px;"> -->
+        <section id="home" style="height: calc(100% - 50px);">
             <div id="div-home">
                 <img id="me-img" src="assets/me.jpg" alt="Hiago dos Santos">
                 <h1>Hi, I'm Hiago</h1>
@@ -36,18 +34,18 @@
 
             <div class="cert-container">
                 <ul>    
-                        <a class="cert" href="https://www.credly.com/earner/earned/badge/a6f5c52c-dd60-45f8-b537-2b61955b3c21" target="_blank">
+                        <a class="cert" href="https://www.credly.com/badges/48a0c785-af6f-4aef-8b88-05222da1da43?trk=feed_main-feed-card_feed-article-content" target="_blank">
                         <img class="cert" id="first-image" src="assets/certifications/cloud_practioner.png" alt="clould practioner">
                         </a>
                         
 
                         <a class="cert" 
-                        href="https://www.credly.com/badges/8337e18e-1ba8-4d19-876f-a602fff1b5be/embedded" target="_blank">
+                        href="https://www.credly.com/badges/8337e18e-1ba8-4d19-876f-a602fff1b5be" target="_blank">
                         <img class="cert" id="second-image"
                         src="assets/certifications/developer_associate.png" alt="developer associate">
                         </a>
 
-                        <a href="https://www.credly.com/earner/earned/badge/0ca43343-6bd5-4849-befc-8a17e80ff503" target="_blank">
+                        <a href="https://www.credly.com/badges/8147d80d-a2a2-4c40-bb07-a1c2d3ffa078?trk=feed_main-feed-card_feed-article-content" target="_blank">
                         <img class="cert" 
                         id="third-image" 
                         src="assets/certifications/solutions_architect_associate.png" alt="solutions architect associate">
@@ -61,7 +59,7 @@
     <main>
         <article>
             <section id="about">
-                <div id="content-about">
+                <div id="content-about" >
                     <h3>About me</h3>
                     <p>
                         I'm a graduate of UnB
@@ -73,11 +71,12 @@
             </section>
             <section id="skills">
                 <h3>Skills</h3>
-                <h4>Machine Learning and Math libs</h4>
+                <h4>Machine Learning</h4>
                 <div id="content-skills">
                     <div class="object-skill">
                         <img src="assets/skills/Keras.svg" alt="pyhton logo">
                         <p>
+                            <strong>Keras:</strong>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod rem vero minus optio, tempore dolor, suscipit reiciendis sit neque veritatis delectus non eaque necessitatibus qui. Aliquid sequi molestias alias impedit?
                         </p>
                     </div>
@@ -85,6 +84,7 @@
                     <div class="object-skill">
                         <img src="assets/skills/pytorch.png" alt="Pytorch logo">
                         <p>
+                            <strong>Pytorch:</strong>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod rem vero minus optio, tempore dolor, suscipit reiciendis sit neque veritatis delectus non eaque necessitatibus qui. Aliquid sequi molestias alias impedit?
                         </p>
                     </div>
@@ -95,6 +95,7 @@
                     <div class="object-skill">
                         <img src="assets/skills/opencv.svg" alt="OpenCV logo">
                         <p>
+                            <strong>OpenCV: </strong>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod rem vero minus optio, tempore dolor, suscipit reiciendis sit neque veritatis delectus non eaque necessitatibus qui. Aliquid sequi molestias alias impedit?
                         </p>
                     </div>
@@ -102,6 +103,7 @@
                     <div class="object-skill">
                         <img src="assets/skills/numpy.svg" alt="numpy logo">
                         <p>
+                            <strong>Numpy:</strong>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod rem vero minus optio, tempore dolor, suscipit reiciendis sit neque veritatis delectus non eaque necessitatibus qui. Aliquid sequi molestias alias impedit?
                         </p>
                     </div>
@@ -112,20 +114,15 @@
                     <div class="object-skill">
                         <img src="assets/skills/fastapi.png" alt="FastAPI logo">
                         <p>
+                            <strong>FastAPI:</strong>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod rem vero minus optio, tempore dolor, suscipit reiciendis sit neque veritatis delectus non eaque necessitatibus qui. Aliquid sequi molestias alias impedit?
                         </p>
                     </div>
 
-                    <!-- <div class="object-skill">
-                        <img src="assets/skills/flask.svg" alt="Flask logo">
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod rem vero minus optio, tempore dolor, suscipit reiciendis sit neque veritatis delectus non eaque necessitatibus qui. Aliquid sequi molestias alias impedit?
-                        </p>
-                    </div> -->
-
                     <div class="object-skill">
                         <img src="assets/skills/django-logo.svg" style="scale: 1.5;" alt="django logo">
                         <p>
+                            <strong> Django: </strong>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod rem vero minus optio, tempore dolor, suscipit reiciendis sit neque veritatis delectus non eaque necessitatibus qui. Aliquid sequi molestias alias impedit?
                         </p>
                     </div>
@@ -136,6 +133,7 @@
                     <div class="object-skill">
                         <img src="assets/skills/python.svg" alt="Python logo">
                         <p>
+                            <strong>Python: </strong>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod rem vero minus optio, tempore dolor, suscipit reiciendis sit neque veritatis delectus non eaque necessitatibus qui. Aliquid sequi molestias alias impedit?
                         </p>
                     </div>
@@ -143,6 +141,7 @@
                     <div class="object-skill">
                         <img src="assets/skills/c++.svg" alt="c++ logo">
                         <p>
+                            <strong>C++: </strong>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod rem vero minus optio, tempore dolor, suscipit reiciendis sit neque veritatis delectus non eaque necessitatibus qui. Aliquid sequi molestias alias impedit?
                         </p>
                     </div>
@@ -151,6 +150,7 @@
                         <img src="assets/skills/css3.svg" alt="css3 logo">
                         <img src="assets/skills/javascript.svg" alt="Javascript  logo">
                         <p>
+                            <strong>HTML5, CSS3 and Javascript: </strong>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod rem vero minus optio, tempore dolor, suscipit reiciendis sit neque veritatis delectus non eaque necessitatibus qui. Aliquid sequi molestias alias impedit?
                         </p>
                     </div>
@@ -158,6 +158,7 @@
                     <div class="object-skill">
                         <img src="assets/skills/angular.svg" alt="AngularJS logo">
                         <p>
+                            <strong>AngularJs: </strong>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod rem vero minus optio, tempore dolor, suscipit reiciendis sit neque veritatis delectus non eaque necessitatibus qui. Aliquid sequi molestias alias impedit?
                         </p>
                     </div>
@@ -169,6 +170,7 @@
                     <div class="object-skill">
                         <img src="assets/skills/aws.webp" style="background-color: white;" alt="AWS logo">
                         <p>
+                            <strong>AWS: </strong>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod rem vero minus optio, tempore dolor, suscipit reiciendis sit neque veritatis delectus non eaque necessitatibus qui. Aliquid sequi molestias alias impedit?
                         </p>
                     </div>
@@ -176,6 +178,7 @@
                     <div class="object-skill">
                         <img src="assets/skills/terraform.svg" alt="Terraform logo">
                         <p>
+                            <strong>Terraform: </strong>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod rem vero minus optio, tempore dolor, suscipit reiciendis sit neque veritatis delectus non eaque necessitatibus qui. Aliquid sequi molestias alias impedit?
                         </p>
                     </div>
@@ -186,6 +189,7 @@
                     <div class="object-skill">
                         <img src="assets/skills/postgreSQL.png" alt="PostgreSQL logo">
                         <p>
+                            <strong>PostgreSQL:</strong>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod rem vero minus optio, tempore dolor, suscipit reiciendis sit neque veritatis delectus non eaque necessitatibus qui. Aliquid sequi molestias alias impedit?
                         </p>
                     </div>
@@ -193,6 +197,7 @@
                     <div class="object-skill">
                         <img src="assets/skills/mysql.png" style="background-color: white;" alt="MySQL logo">
                         <p>
+                            <strong>MySQL:</strong>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod rem vero minus optio, tempore dolor, suscipit reiciendis sit neque veritatis delectus non eaque necessitatibus qui. Aliquid sequi molestias alias impedit?
                         </p>
                     </div>
@@ -203,6 +208,7 @@
                     <div class="object-skill">
                         <img src="assets/skills/docker-logo.svg" alt="Docker logo">
                         <p>
+                            <strong>Docker: </strong>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod rem vero minus optio, tempore dolor, suscipit reiciendis sit neque veritatis delectus non eaque necessitatibus qui. Aliquid sequi molestias alias impedit?
                         </p>
                     </div>
@@ -210,6 +216,7 @@
                     <div class="object-skill">
                         <img src="assets/skills/docker-compose.png" alt="Docker Compose logo">
                         <p>
+                            <strong>Docker Compose: </strong>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod rem vero minus optio, tempore dolor, suscipit reiciendis sit neque veritatis delectus non eaque necessitatibus qui. Aliquid sequi molestias alias impedit?
                         </p>
                     </div>
