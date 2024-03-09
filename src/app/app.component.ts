@@ -15,7 +15,7 @@ import { TimelineComponent } from './components/timeline/timeline.component';
             TimelineComponent,
             ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'personal-website';

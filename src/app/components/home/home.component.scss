@@ -1,6 +1,7 @@
+@import "variables";
 
 header {
-    background: linear-gradient(to top, var(--color5), rgba(255, 255, 255, 0.044)), url("../../../assets/pexels-photo-13618459.jpeg");
+    background: linear-gradient(to top, var(--color5), rgba(255, 255, 255, 0.044)), url("/assets/pexels-photo-13618459.jpeg");
     background-repeat: no-repeat;
     width: 100%;
     height: 100%;
@@ -73,11 +74,10 @@ header img#me-img {
     display: block;
     margin: auto;
 
-    max-width: 250px;
-    max-height: 250px;
+    width: 250px;
+    height: 250px;
     border-radius: 50%;
     border: 8px solid white;
-
 }
 
 header h1, h2, h3, p {
@@ -93,7 +93,7 @@ header h4 {
 
 header p {
     margin: auto;
-    max-width: 600px;
+    width: 350px;
     border-bottom: 1px var(--color2) solid;
     padding: 10px 0px;
     color: var(--color1);
@@ -129,4 +129,18 @@ header div.cert-container:hover img:hover {
     transform: scale(1.2);
     position: relative;
     z-index: 1;
+}
+
+
+@media (max-width: $phone-width)  {
+    header img#me-img {
+        width: 150px;
+        height: 150px;
+        border: 6px solid white;
+    }
+
+    // header div#div-home {
+    //     padding-top: 60px;
+    // }
+    
 }
