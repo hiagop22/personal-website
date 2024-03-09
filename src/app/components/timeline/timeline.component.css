@@ -1,0 +1,101 @@
+:host{
+    --img-size: 120px;
+    --outside-line: 25px;
+    --padding-content: 15px 0 50px calc(var(--img-size) + var(--outside-line) + 10px);
+}
+
+* {
+    color: black;
+}
+
+section {
+    background-color: white;
+    min-height: 100%;
+}
+
+div.content {
+    background-color: rgba(128, 128, 128, 0.231);
+}
+
+ul {
+    list-style: none;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+li {
+    position: relative;
+    overflow: hidden;
+    padding: var(--padding-content);
+    text-align: left;
+}
+
+
+
+li::before {
+    /* box-sizing: border-box; */
+    content: "";
+    position: absolute;
+    left: calc(var(--img-size) / 2);
+    top: calc(var(--img-size) / 2);
+    width: calc(var(--img-size) /2 + var(--outside-line));
+    height: 999px;
+    border: 2px solid var(--color2);
+    border-width: 2px 0 0 2px;
+}
+
+li:last-child::before {
+    border-width: 2px 0 0;
+    border-left: 2px solid transparent;
+}
+
+li::after {
+    box-sizing: border-box;
+    content: "";
+    position: absolute;    
+    left: 0;
+    top: 0;
+    width: var(--img-size);
+    height: var(--img-size);
+    /* background-color: white; */
+    border: 2px solid var(--color2);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+li#rm::after {
+    background: url("../../../assets/timeline/rm.png") no-repeat;
+    background-size: cover;
+}
+
+li#unball::after {
+    background: url("../../../assets/timeline/unball.png") no-repeat;
+    background-size: cover;
+}
+
+li#cnpq::after {
+    background: url("../../../assets/timeline/cnpq.jpeg") no-repeat;
+    background-size: cover;
+}
+
+li#unb::after {
+    background: url("../../../assets/timeline/unb.png") no-repeat;
+    background-size: cover;
+}
+
+li#etb::after {
+    background: url("../../../assets/timeline/etb.jpg") no-repeat;
+    background-size: cover;
+}
+
+a.img {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--img-size);
+    height: var(--img-size);
+    border-radius: 50%;
+    z-index: 2;
+    background-color: transparent;
+}
