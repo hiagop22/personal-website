@@ -8,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './skills.component.css'
 })
 export class SkillsComponent {
+  constructor(){}
 
+  ngOnInit(): void{
+
+  }
 }
