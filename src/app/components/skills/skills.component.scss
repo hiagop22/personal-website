@@ -1,3 +1,4 @@
+@import "variables";
 
 h3 {
     color: white;
@@ -11,7 +12,6 @@ h4 {
 
 h4:first-of-type {
     padding-top: 0px;
-    /* background-color: red; */
 }
 
 h4::before {
@@ -20,16 +20,13 @@ h4::before {
 }
 
 section div.content {
-    background-color: color-mix(in oklab, transparent, var(--color3) 15%);
+    background-color: color-mix(in oklab, transparent, $color3 15%);
 }
 
 section div.flex {
     display: flex;
     flex-wrap: wrap;
-    /* background-color: red; */
-    /* width: 50%; */
     justify-content: center;
-    /* align-items: center; */
 }
 
 section div.object-skill {
@@ -40,16 +37,13 @@ section div.object-skill {
 section div.object-skill img{
     width: 50px;
     height: 50px;
-    /* background-color: rebeccapurple; */
 }
 
 section div.object-skill p{
     width: 300px;
     height: 250px;
     background-color: white;
-    /* border-radius: 20px; */
-    /* border-top-left-radius: 20px;
-    border-top-right-radius: 20px; */
+   
     padding: 20px;
     color: black;
     text-align: justify;

@@ -1,7 +1,7 @@
 @import "variables";
 
 header {
-    background: linear-gradient(to top, var(--color5), rgba(255, 255, 255, 0.044)), url(../../../assets/pexels-photo-13618459.jpeg);
+    background: linear-gradient(to top, $color5, rgba(255, 255, 255, 0.044)), url(../../../assets/pexels-photo-13618459.jpeg);
     background-repeat: no-repeat;
     width: 100%;
     height: max(100%, 900px);
@@ -26,7 +26,7 @@ header div#nav {
 }
 
 .color-js {
-    border-bottom: var(--color4) 2px solid; 
+    border-bottom: $color4 2px solid; 
     transition: 0.5s;
 }
 
@@ -34,11 +34,11 @@ header div#nav {
     margin: auto;
     text-align: center;
     width: 60%;
-    border-bottom: var(--color2) 2px solid; 
+    border-bottom: $color2 2px solid; 
 }
 
 header div#nav ul{
-    /* border-bottom: var(--color4) 2px solid;  */
+    /* border-bottom: $color4 2px solid;  */
     text-align: center;
     text-transform: uppercase;
     padding: 25px;
@@ -51,15 +51,15 @@ header div#nav a {
 }
 
 header div#nav a:hover {
-    border-bottom: var(--color6) 2px solid;
+    border-bottom: $color6 2px solid;
     padding-bottom: 25px;
-    color: var(--color6);
+    color: $color6;
 }
 
 header div#nav a.menu-active {
-    border-bottom: var(--color6) 2px solid;
+    border-bottom: $color6 2px solid;
     padding-bottom: 25px;
-    color: var(--color6);
+    color: $color6;
 }
 
 header li {
@@ -68,7 +68,6 @@ header li {
 
 header div#div-home {
     padding-top: 220px;
-    // background-color: red;
 
     position: absolute;
     top: max(400px, calc(100% / 2));
@@ -92,7 +91,7 @@ header h1 {
 
 header h1, h2, h3, p {
     text-align: center;
-    color: var(--color1);
+    color: $color1;
 }
 
 
@@ -104,9 +103,9 @@ header h4 {
 header p {
     margin: auto;
     width: 350px;
-    border-bottom: 1px var(--color2) solid;
+    border-bottom: 1px $color2 solid;
     padding: 10px 0px;
-    color: var(--color1);
+    color: $color1;
 }
 
 
@@ -115,8 +114,6 @@ div.cert-container {
     margin: auto;
     text-align: center;
     margin-top: 50px;
-    // max-width: 370px;
-    /* background-color: white; */
 }
 
 
@@ -133,8 +130,6 @@ div.cert-container:hover img:not(:hover) {
 }
 
 div.cert-container:hover img:hover {
-    /* transform: translate(-15px, -15px);
-    filter: drop-shadow(15px 15px 0 var(--color4)); */
     transform: scale(1.2);
     position: relative;
     z-index: 1;
@@ -154,8 +149,6 @@ div.cert-container:hover img:hover {
     
 
     header img.cert {
-        // padding: 15px 10px;
         width: 80px;
-        /* background-color: black; */
     }
 }

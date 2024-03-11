@@ -1,8 +1,27 @@
-:host{
+@import "variables";
+
+:host {
     --img-size: 120px;
     --outside-line: 25px;
     --padding-content: 15px 0 50px calc(var(--img-size) + var(--outside-line) + 10px);
 }
+
+
+@media (max-width: $phone-width)  {
+    :host{
+        --img-size: 60px;
+        --outside-line: 25px;
+        --padding-content: 15px 0 50px calc(var(--img-size) + var(--outside-line) + 10px);
+    }
+
+    ul {
+        list-style: none;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+
 
 * {
     color: black;
@@ -17,11 +36,15 @@ div.content {
     background-color: rgba(128, 128, 128, 0.231);
 }
 
-ul {
-    list-style: none;
-    padding-left: 40px;
-    padding-right: 40px;
+@media (min-width: $phone-width)  {
+
+    ul {
+        list-style: none;
+        padding-left: 40px;
+        padding-right: 40px;
+    }
 }
+
 
 li {
     position: relative;
@@ -40,7 +63,7 @@ li::before {
     top: calc(var(--img-size) / 2);
     width: calc(var(--img-size) /2 + var(--outside-line));
     height: 999px;
-    border: 2px solid var(--color2);
+    border: 2px solid $color2;
     border-width: 2px 0 0 2px;
 }
 
@@ -57,8 +80,7 @@ li::after {
     top: 0;
     width: var(--img-size);
     height: var(--img-size);
-    /* background-color: white; */
-    border: 2px solid var(--color2);
+    border: 2px solid $color2;
     border-radius: 50%;
     z-index: 0;
 }
@@ -83,3 +105,4 @@ a.img {
     z-index: 2;
     background-color: transparent;
 }
+
