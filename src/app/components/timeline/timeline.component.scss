@@ -64,10 +64,10 @@ li::after {
 }
 
 
-$imgs: "rm", "unball", "cnpq", "unb", "etb";
+$imgs: "etb", "unb", "maratona", "mat", "unball", "pibic", "cnpq", "rm";
 @each $img in $imgs {
   li##{$img}::after {
-    background: url(/assets/timeline/#{$img}.png) no-repeat;
+    background: url(../../../assets/timeline/#{$img}.png) no-repeat;
     background-size: cover;
     }
 }

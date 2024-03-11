@@ -35,7 +35,9 @@
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
-                   "src/sass/"]
+                   "src/sass",
+                   "src/assets"
+                  ]
                   },
             "scripts": []
           },
