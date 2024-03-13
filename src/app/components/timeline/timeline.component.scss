@@ -1,11 +1,13 @@
 @import "variables";
 
 :host {
-    --img-size: 120px;
+    --img-size: 110px;
     --outside-line: 25px;
-    --padding-content: 15px 0 50px calc(var(--img-size) + var(--outside-line) + 10px);
+    --padding-content: 5px 0 50px calc(var(--img-size) + var(--outside-line) + 10px);
 }
 
+$back-color: rgba(128, 128, 128, 0.231);
+$gray-circle: rgba(0, 0, 0, 0.616);
 
 @media (max-width: $phone-width)  {
     :host{
@@ -16,7 +18,7 @@
 
     ul {
         list-style: none;
-        padding-left: 10px;
+        padding-left: 30px;
         padding-right: 10px;
     }
 }
@@ -33,7 +35,7 @@ section {
 }
 
 div.content {
-    background-color: rgba(128, 128, 128, 0.231);
+    background-color: $back-color;
 }
 
 @media (min-width: $phone-width)  {
@@ -45,6 +47,37 @@ div.content {
     }
 }
 
+h5 {
+    padding: 8px;
+}
+
+h3.sub {
+    font-size: 1.3rem;;
+    text-align: left;
+    padding-left: 10px;
+    padding-bottom: 25px;
+    padding-top: 0px;
+    text-decoration: underline $color3 2px;
+}
+
+h3.sub::before {
+    content: "•";
+    margin-right: 0.5em;
+    color: $gray-circle;
+    display:inline-block;
+}
+
+
+span::after {
+    content: " •";
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    color: $gray-circle;
+}
+
+hr {
+    margin-bottom: 50px;
+}
 
 li {
     position: relative;
@@ -55,7 +88,7 @@ li {
 
 
 
-li::before {
+ul:not(.aws) li::before {
     /* box-sizing: border-box; */
     content: "";
     position: absolute;
@@ -67,12 +100,12 @@ li::before {
     border-width: 2px 0 0 2px;
 }
 
-li:last-child::before {
+ul:not(.aws) li:last-child::before {
     border-width: 2px 0 0;
     border-left: 2px solid transparent;
 }
 
-li::after {
+ul:not(.aws) li::after{
     box-sizing: border-box;
     content: "";
     position: absolute;    
@@ -85,12 +118,49 @@ li::after {
     z-index: 0;
 }
 
+ul.aws li::after{
+    box-sizing: border-box;
+    content: "";
+    position: absolute;    
+    left: 0;
+    top: 0;
+    width: var(--img-size);
+    height: var(--img-size);
+    // border: 2px solid $color2;
+    // border-radius: 50%;
+    z-index: 0;
+}
 
-$imgs: "etb", "unb", "maratona", "mat", "unball", "pibic", "cnpq", "rm";
+ul.aws li::after{
+    box-sizing: border-box;
+    content: "";
+    position: absolute;    
+    left: 0;
+    top: 20px;
+    width: var(--img-size);
+    height: var(--img-size);
+    // border: 2px solid red;
+    // border-radius: 50%;
+    // z-index: 0;
+}
+
+
+@mixin func($name) {
+    @if str-index($string: $name, $substring: "cert") {
+        background-size: contain;
+    }
+    @else {
+        background-size: cover;
+    }
+}
+
+$imgs: "etb", "unb", "maratona", "mat", 
+       "unball", "pibic", "cnpq", "rm",
+       "cert-practitioner", "cert-architect", "cert-developer";
 @each $img in $imgs {
   li##{$img}::after {
     background: url(../../../assets/timeline/#{$img}.png) no-repeat;
-    background-size: cover;
+    @include func($img);
     }
 }
 
@@ -106,3 +176,20 @@ a.img {
     background-color: transparent;
 }
 
+h5, h5 a {
+    font-weight: normal;
+    text-decoration: none;
+    color: $gray-circle;
+}
+
+h5 a:hover {
+    text-decoration: underline;
+}
+
+ul.aws li a {
+    text-decoration: none;
+}
+
+ul.aws li a:hover {
+    text-decoration: underline;
+}

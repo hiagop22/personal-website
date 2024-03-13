@@ -1,11 +1,12 @@
 @import "variables";
 
 header {
-    background: linear-gradient(to top, $color5, rgba(255, 255, 255, 0.044)), url(../../../assets/pexels-photo-13618459.jpeg);
+    // background: linear-gradient(to top, $color5, rgba(255, 255, 255, 0.044)), url(../../../assets/pexels-photo-13618459.jpeg);
+    background: linear-gradient(to top, $color5, rgba(255, 255, 255, 0.044)), url(../../../assets/tower3.jpg);
     background-repeat: no-repeat;
     width: 100%;
     height: max(100%, 900px);
-    background-position: bottom center;
+    background-position: center center;
     background-size: cover;
 }
 
@@ -28,6 +29,8 @@ header div#nav {
 .color-js {
     border-bottom: $color4 2px solid; 
     transition: 0.5s;
+    // width: 20%;
+    // margin: 100%;
 }
 
 .non-color-js {
@@ -38,7 +41,9 @@ header div#nav {
 }
 
 header div#nav ul{
-    /* border-bottom: $color4 2px solid;  */
+    // border-bottom: $color2 2px solid; 
+    // width: 60%;
+    margin: auto;
     text-align: center;
     text-transform: uppercase;
     padding: 25px;
