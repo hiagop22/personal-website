@@ -23,7 +23,34 @@ $gray-circle: rgba(0, 0, 0, 0.616);
     }
 }
 
+@mixin nonAwsLinkImg(){
+    position: absolute;    
+    left: 0;
+    top: 0;
+    width: var(--img-size);
+    height: var(--img-size);
+}
 
+@mixin linkBlock(){
+    display: inline-block;
+    z-index: 2;
+    background-color: transparent;
+}
+
+@mixin awsLinkImg(){
+    @include nonAwsLinkImg();
+    top: 20px;
+}
+
+
+@mixin func($name) {
+    @if str-index($string: $name, $substring: "cert") {
+        background-size: contain;
+    }
+    @else {
+        background-size: cover;
+    }
+}
 
 * {
     color: black;
@@ -47,10 +74,6 @@ div.content {
     }
 }
 
-h5 {
-    padding: 8px;
-}
-
 h3.sub {
     font-size: 1.3rem;;
     text-align: left;
@@ -65,6 +88,24 @@ h3.sub::before {
     margin-right: 0.5em;
     color: $gray-circle;
     display:inline-block;
+}
+
+h4 a {
+    text-decoration: none;
+}
+
+h5 {
+    padding: 8px;
+}
+
+h5, h5 a {
+    font-weight: normal;
+    text-decoration: none;
+    color: $gray-circle;
+}
+
+h5 a:hover , h4 a:hover {
+    text-decoration: underline;
 }
 
 
@@ -108,51 +149,22 @@ ul:not(.aws) li:last-child::before {
 ul:not(.aws) li::after{
     box-sizing: border-box;
     content: "";
-    position: absolute;    
-    left: 0;
-    top: 0;
-    width: var(--img-size);
-    height: var(--img-size);
+    @include nonAwsLinkImg();
     border: 2px solid $color2;
     border-radius: 50%;
     z-index: 0;
 }
 
-ul.aws li::after{
-    box-sizing: border-box;
-    content: "";
-    position: absolute;    
-    left: 0;
-    top: 0;
-    width: var(--img-size);
-    height: var(--img-size);
-    // border: 2px solid $color2;
-    // border-radius: 50%;
-    z-index: 0;
-}
+
+
 
 ul.aws li::after{
     box-sizing: border-box;
     content: "";
-    position: absolute;    
-    left: 0;
-    top: 20px;
-    width: var(--img-size);
-    height: var(--img-size);
-    // border: 2px solid red;
-    // border-radius: 50%;
-    // z-index: 0;
+    @include awsLinkImg();
 }
 
 
-@mixin func($name) {
-    @if str-index($string: $name, $substring: "cert") {
-        background-size: contain;
-    }
-    @else {
-        background-size: cover;
-    }
-}
 
 $imgs: "etb", "unb", "maratona", "mat", 
        "unball", "pibic", "cnpq", "rm",
@@ -164,27 +176,17 @@ $imgs: "etb", "unb", "maratona", "mat",
     }
 }
 
-a.img {
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: var(--img-size);
-    height: var(--img-size);
+ul:not(.aws) a.img {
+    @include linkBlock();
+    @include nonAwsLinkImg();
     border-radius: 50%;
-    z-index: 2;
-    background-color: transparent;
 }
 
-h5, h5 a {
-    font-weight: normal;
-    text-decoration: none;
-    color: $gray-circle;
+ul.aws a.img {
+    @include linkBlock();
+    @include awsLinkImg();
 }
 
-h5 a:hover {
-    text-decoration: underline;
-}
 
 ul.aws li a {
     text-decoration: none;
