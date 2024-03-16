@@ -1,0 +1,71 @@
+@import "variables";
+
+h3 {
+    color: white;
+}
+
+p {
+    color: white;
+    padding-bottom: 400px;
+    padding-top: 400px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h4 {
+    text-align: left;
+    padding-left: 20px;
+    padding-top: 50px;
+}
+
+
+section div.content {
+    background-color: color-mix(in oklab, transparent, $color3 15%);
+}
+
+section div.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+section div.object-skill {
+    text-align: center;
+    margin: 20px;
+}
+
+
+section div.object-skill p{
+    width: 400px;
+    height: 150px;
+    background-color: white;
+   
+    padding: 20px;
+    color: black;
+    text-align: justify;
+    box-shadow: 5px 5px 10px black;
+    border-bottom: 3px solid white;
+}
+
+span {
+   font-size: 20px;
+   position: relative;
+   top: 2px;
+}
+
+.fa {
+    padding-right: 4px;
+}
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 500,
+  'GRAD' 0,
+  'opsz' 24
+}

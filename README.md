@@ -15,6 +15,11 @@ terraform init
 
 terraform validate
 
+
+To generate static files
+ng build  --base-href 'https://aih.dev.br'
+
+
 To deploy a new version of the site 
 plan and apply
 Remember to clear the browser cache when updating the page or use an incognito tab to test the redeploys

@@ -4,6 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { SkillsComponent } from './components/skills/skills.component';
 import { AboutComponent } from './components/about/about.component';
 import { TimelineComponent } from './components/timeline/timeline.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,7 @@ import { TimelineComponent } from './components/timeline/timeline.component';
             AboutComponent,
             SkillsComponent,
             TimelineComponent,
+            ContactComponent,
             ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

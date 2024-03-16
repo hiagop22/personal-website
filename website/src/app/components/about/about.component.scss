@@ -19,3 +19,20 @@ section div.content {
 section p, section h3 {
     color: black;
 }
+
+p {
+    line-height: 2rem;
+    padding-bottom: 15px;
+}
+
+h3#contact {
+    text-align: left;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
