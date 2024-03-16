@@ -1,27 +1,80 @@
-# PersonalWebsite
+<!-- # Serveless API AWS 
+This repository demonstrates a simple project showcasing how to create an API in AWS using Terraform + FastAPI + Pytest + ECR + JWT.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.0.
+There is a freely accessible endpoint at "/", but all others require authentication using a bearer JWT.
 
-## Development server
+Verifique se tem a versão instalada do terraform, se não tiver. Instale-a usando
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+https://github.com/tfutils/tfenv
 
-## Code scaffolding
+tfenv list
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+tfenv use 1.7.1
 
-## Build
+terraform init
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+terraform validate
 
-## Running unit tests
+To deploy a new version of the site 
+plan and apply
+Remember to clear the browser cache when updating the page or use an incognito tab to test the redeploys
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## AWS Infrastructure
 
-## Running end-to-end tests
+First of all, export your AWS credentials to your shell using:
+```shell
+export AWS_ACCESS_KEY_ID=""
+export AWS_SECRET_ACCESS_KEY=""
+export REGION=""
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+To automate the provision of the resources, [terraform](https://www.terraform.io/) is utilized. 
 
-## Further help
+Typically, in a software development lifecycle, it is recommended to have separate `dev` and `prod` environments. To view available workspaces, use:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```shell
+$ terraform workspace list
+```
+If a workspace has not been previously created, you can create a new one:
+```shell
+$ terraform workspace new dev
+```
+
+and then, select the desired workspace (in this case is dev):
+```shell
+$ terraform workspace select dev
+```
+
+### Creating
+Use the following command to create an execution plan:
+```shell
+$ terraform plan -out="tfplan.out"
+```
+Finally, provision all coded infrastructure using:
+```shell
+$ terraform apply
+```
+
+### Updates in API (REDEPLOY)
+The `plan` and `apply` commands of Terraform automatically verify updates in the api code and redeploy them as a new version to the ECR as the latest image to be used by Lambda. 
+
+
+### Destroying
+Be aware that using the command bellow, `ALL` resources created by terraform code will be destroyied:
+```shell
+$ terraform destroy
+```
+
+## Tests
+To veriry if the api is working correctlly, use the following command:
+```shell
+$ pytest
+```
+
+Ensure that all dependencies located in [requirements.txt](api/requirements.txt) are installled.
+
+## Docs
+The documentation endpoin is freely accessible as well; no JWT authentication is necessary.
+Access the application address using the endpoint `docs`, for example, `https:test.amazonaws.us-east-1/docs`, and observe how FastAPI generates an awesome Swagger Documentation on its own.
+
+ -->

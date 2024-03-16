@@ -2,12 +2,23 @@
 
 # Compiled output
 /dist
+# *dist*
+*/dist*
+*.angular*
+*cache*
 /tmp
 /out-tsc
 /bazel-out
+website/.angular
+
+.terraform
+credentials*
+terraform.tfstate*
+.terraform.lock.hcl
+tfplan.out
 
 # Node
-/node_modules
+*node_modules*
 npm-debug.log
 yarn-error.log
 

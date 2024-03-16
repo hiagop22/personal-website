@@ -130,7 +130,7 @@ li {
 
 
 ul:not(.aws) li::before {
-    /* box-sizing: border-box; */
+    // box-sizing: border-box;
     content: "";
     position: absolute;
     left: calc(var(--img-size) / 2);
@@ -157,7 +157,6 @@ ul:not(.aws) li::after{
 
 
 
-
 ul.aws li::after{
     box-sizing: border-box;
     content: "";
@@ -177,9 +176,14 @@ $imgs: "etb", "unb", "maratona", "mat",
 }
 
 ul:not(.aws) a.img {
+    box-sizing: border-box;
     @include linkBlock();
     @include nonAwsLinkImg();
     border-radius: 50%;
+}
+
+ul:not(.aws) a.img:hover{
+    border: 3px solid $color6;
 }
 
 ul.aws a.img {
