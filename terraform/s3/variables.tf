@@ -2,8 +2,20 @@ variable "domain" {
   type = string
 }
 
-variable "website_path" {
+variable "web_build_path" {
   type = string
+}
+
+variable "web_root_path" {
+  type = string
+}
+
+variable "md5_files" {
+  type = list(string)
+  default = [ "*.ts", 
+              "*.html",
+              "*.scss",
+              ]
 }
 
 # https://github.com/hashicorp/terraform-template-dir/blob/master/variables.tf

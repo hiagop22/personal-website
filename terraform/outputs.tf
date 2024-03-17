@@ -19,5 +19,5 @@ output "distribution-id" {
 }
 
 output "fileset-results" {
-  value = fileset(var.website_path, "*")
+  value = fileset(var.web_build_path, "*")
 }

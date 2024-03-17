@@ -17,6 +17,12 @@ terraform validate
 
 
 To generate static files
+REquirements
+terraform versions
+Recommended to use tfenv to manage terraform versions accross many projects
+
+REcommended to use nvm
+Use a nvm use v20. ?
 ng build  --base-href 'https://aih.dev.br'
 
 

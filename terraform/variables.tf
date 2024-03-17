@@ -16,9 +16,15 @@ variable "domain" {
   default     = "aih.dev.br"
 }
 
-variable "website_path" {
+variable "web_build_path" {
   type        = string
   description = ""
   default     = "../website/dist/personal-website/browser"
+}
+
+variable "web_root_path" {
+  type        = string
+  description = ""
+  default     = "../website"
 }
 

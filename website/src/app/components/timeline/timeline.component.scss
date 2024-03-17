@@ -6,6 +6,7 @@
     --padding-content: 5px 0 50px calc(var(--img-size) + var(--outside-line) + 10px);
 }
 
+
 $back-color: rgba(128, 128, 128, 0.231);
 $gray-circle: rgba(0, 0, 0, 0.616);
 
@@ -94,7 +95,7 @@ h4 a {
     text-decoration: none;
 }
 
-h5 {
+h4, h5, p {
     padding: 8px;
 }
 
@@ -184,6 +185,7 @@ ul:not(.aws) a.img {
 
 ul:not(.aws) a.img:hover{
     border: 3px solid $color6;
+    z-index: 1;
 }
 
 ul.aws a.img {

@@ -17,7 +17,7 @@ provider "aws" {
       Project      = "AWS com Terraform"
       Service      = "Static Website"
       CreatedAt    = "2024-03-16"
-      LastUpdateAt = formatdate("YYYYMMDD", timestamp())
+      LastUpdateAt = formatdate("YYYY-MM-DD", timestamp())
     }
   }
 }
@@ -25,7 +25,8 @@ provider "aws" {
 module "s3" {
   source       = "./s3"
   domain       = var.domain
-  website_path = var.website_path
+  web_build_path = var.web_build_path
+  web_root_path = var.web_root_path
 }
 
 module "acm" {
