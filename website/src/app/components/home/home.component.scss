@@ -10,6 +10,8 @@ header {
     background-size: cover;
 }
 
+$padding-border: 25px;
+
 header div#nav {
     width: 100%;
     
@@ -40,9 +42,32 @@ header div#nav {
     border-bottom: $color2 2px solid; 
 }
 
+.show {
+    display: none;
+}
+
+.hide {
+    display: block;
+}
+
+
+
+span#burguer {
+    font-size: 1.5rem;
+    padding: 0px;
+    display: none;
+    text-align: center;
+    position: relative;
+    top: 25px;
+}
+
+span#burguer:hover {
+    color: white;   
+    cursor: pointer;
+}
+
+
 header div#nav ul{
-    // border-bottom: $color2 2px solid; 
-    // width: 60%;
     margin: auto;
     text-align: center;
     text-transform: uppercase;
@@ -51,24 +76,27 @@ header div#nav ul{
 
 header div#nav a {
     text-decoration: none;
-    padding: 25px 20px;
+    padding: $padding-border 20px;
     color: white;
 }
 
-header div#nav a:hover {
+@mixin border() {
     border-bottom: $color6 2px solid;
-    padding-bottom: 25px;
+    padding-bottom: $padding-border;
     color: $color6;
 }
 
+header div#nav a:hover {
+    @include border();
+}
+
 header div#nav a.menu-active {
-    border-bottom: $color6 2px solid;
-    padding-bottom: 25px;
-    color: $color6;
+    @include border();
 }
 
 header li {
     display: inline;
+    padding: $padding-border calc((500*$padding-border)/vw)px;
 }
 
 header div#div-home {
@@ -142,6 +170,8 @@ div.cert-container:hover img:hover {
 
 
 @media (max-width: $phone-width)  {
+    $padding-border: 10px;
+
     header img#me-img {
         width: max(120px, 50%);
         height: max(120px, 50%);
@@ -156,4 +186,59 @@ div.cert-container:hover img:hover {
     header img.cert {
         width: 80px;
     }
+
+    header li {
+        display: block;
+        padding: 5px 0px;
+    }
+
+    @mixin pad-nav {
+        padding-left: 20%;
+        padding-right: 20%;
+    }
+
+    @mixin border() {
+        border-bottom: none;
+        // background-color: blue;
+        padding-bottom: $padding-border;
+        // background-color: red;
+        @include pad-nav();
+        // padding-right: 100%;
+        // color: $color6;
+    }
+
+    header div#nav a:hover {
+        @include border();
+    }
+    
+    header div#nav a.menu-active {
+        @include border();
+    }
+    
+
+    header div#nav ul{
+        // margin: auto;
+        // text-align: center;
+        // text-transform: uppercase;
+        padding-bottom: 25px;
+        // padding: 25px;
+    }
+    
+    header li {
+        padding: $padding-border;
+    }
+    
+    header div#nav a {
+        padding: $padding-border 20px;
+        @include pad-nav();
+    }
+
+    span#burguer {
+        display: block;
+    }
+
+    .non-color-js {
+        border-bottom: transparent; 
+    }
+    
 }

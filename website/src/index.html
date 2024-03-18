@@ -11,26 +11,70 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body>
+<body onresize="mudouTamanho()">
   <app-root></app-root>
 </body>
 
 <script>
-  $(document).scroll(function () {
+  var menuIsClicked = false;
 
+  window.addEventListener("DOMContentLoaded", function() {
+    if (window.innerWidth < 922){
+      $("#nav").addClass("menu-color");
+      aqui.style.display ="none";
+    }
+  })
+
+  function clickMenu() {
+
+      this.menuIsClicked = !this.menuIsClicked;
+      var element = document.getElementById('burguer');
+
+      if(this.menuIsClicked){
+        aqui.style.display ="block";
+        element.innerText = "close"
+      }
+      else {
+        element.innerText = "menu"
+        aqui.style.display ="none";
+      }
+    }
+
+function mudouTamanho(){
+  console.log("block")
+      if (window.innerWidth >= 922){
+        burguer.style.display = "none";
+          aqui.style.display = "block";
+          // this.menuIsClicked = false;
+          // if(this.clicked){
+            // }
+          }
+          else {
+            burguer.style.display = "block";
+            aqui.style.display = "none";
+            burguer.innerText = "menu"
+            this.menuIsClicked = false;
+      }
+  }
+
+  $(document).scroll(function () {
+      
       $('section').each(function () {
-          if($(this).position().top <= $(document).scrollTop() && ($(this).position().top + $(this).outerHeight()) > $(document).scrollTop()) {
+          if(($(this).position().top - 50)<= $(document).scrollTop() && (($(this).position().top - 50) + $(this).outerHeight()) > $(document).scrollTop()) {
               const page = $(this).attr('id');
               $("#nav a" + "#nav-" + page).addClass("menu-active");
               console.log("#nav a" + "#nav-" + page);
               console.log(page)
+              
               if(page != "above") {
                   $("#nav").addClass("menu-color")
                   $("#nav ul").removeClass("non-color-js")
                   $("#nav ul").addClass("color-js")
               }
               else{
-                  $("#nav").removeClass("menu-color")
+                  if (window.innerWidth >= 922){
+                    $("#nav").removeClass("menu-color")
+                  }
                   $("#nav ul").removeClass("color-js")
                   $("#nav ul").addClass("non-color-js")
               }

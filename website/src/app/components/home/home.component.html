@@ -1,16 +1,28 @@
 <header>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet">
+
+
     <section id="above" style="padding-bottom: 50px">
-    <div id="nav">
-        <ul class="non-color-js">
-        <li><a id="nav-home" href="#above">home</a></li>
-        <li><a id="nav-about" href="#about">about</a></li>
-        <li><a id="nav-skills" href="#skills">skills</a></li>
-        <li><a id="nav-timeline" href="#timeline">timeline</a></li>
-        <li><a id="nav-contact"  href="#contact">contact</a></li>
-        <li><a id="resume" href="assets/resume.pdf" target="_blank">
-            <i class="fa fa-regular fa-file"></i>
-            <strong> resume</strong></a></li>
+        <div id="nav">
+            <!-- <span class="material-icons" id="burguer" (click)="myFunc()">{{menu}}</span> -->
+            <span class="material-icons" id="burguer" onclick="clickMenu()">menu</span>
+        <ul>
+        <div id="aqui">
+            <!-- <ng-container *ngIf="menuIsClicked"> -->
+            
+                <li><a id="nav-home" href="#above">home</a></li>
+                <li><a id="nav-about" href="#about">about</a></li>
+                <li><a id="nav-skills" href="#skills">skills</a></li>
+                <li><a id="nav-timeline" href="#timeline">timeline</a></li>
+                <li><a id="nav-contact"  href="#contact">contact</a></li>
+                <li><a id="resume" href="assets/resume.pdf" target="_blank">
+                <i class="fa fa-regular fa-file"></i>
+                <strong> resume</strong></a></li>
+            <!-- </ng-container> -->
+            </div>
         </ul>
+            
     </div>
     </section>
     <section id="home" style="height: calc(100% - 50px);">
@@ -45,3 +57,4 @@
         </div>
     </section>
 </header>
+

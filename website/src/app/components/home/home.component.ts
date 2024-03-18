@@ -1,16 +1,34 @@
-import { Component } from '@angular/core';
+// import { NgClass } from '@angular/common';
+import { NgIf, NgStyle } from '@angular/common';
+import { Component, ElementRef } from '@angular/core';
+
+// declare const angular: any;
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [NgIf,
+            NgStyle,
+            ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
   constructor(){}
 
-  ngOnInit(): void{
+  // menu: string = "menu";
+  // menuIsClicked: boolean = false;
 
-  }
+  ngOnInit(): void{};
+
+  // myFunc() {
+  //   this.menuIsClicked = !this.menuIsClicked;
+
+  //   if(this.menuIsClicked){
+  //     this.menu ="close";
+  //   }
+  //   else {
+  //     this.menu = "menu";
+  //   }
+  // }
 }
