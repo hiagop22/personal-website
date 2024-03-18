@@ -57,6 +57,16 @@ function mudouTamanho(){
       }
   }
 
+  document.addEventListener("click", e => {
+    if (window.innerWidth < 922){
+      if (!nav.contains(e.target)){
+        aqui.style.display = "none";
+        burguer.innerText = "menu"
+        this.menuIsClicked = false;
+     }
+    }
+  })
+
   $(document).scroll(function () {
       
       $('section').each(function () {
