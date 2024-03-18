@@ -41,7 +41,6 @@
     }
 
 function mudouTamanho(){
-  console.log("block")
       if (window.innerWidth >= 922){
         burguer.style.display = "none";
           aqui.style.display = "block";
@@ -73,8 +72,6 @@ function mudouTamanho(){
           if(($(this).position().top - 50)<= $(document).scrollTop() && (($(this).position().top - 50) + $(this).outerHeight()) > $(document).scrollTop()) {
               const page = $(this).attr('id');
               $("#nav a" + "#nav-" + page).addClass("menu-active");
-              console.log("#nav a" + "#nav-" + page);
-              console.log(page)
               
               if(page != "above") {
                   $("#nav").addClass("menu-color")
