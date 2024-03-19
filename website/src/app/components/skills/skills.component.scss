@@ -37,21 +37,61 @@ section div.object-skill {
 section div.object-skill img{
     width: 50px;
     height: 50px;
+    padding: 0px 5px;
 }
 
-section div.object-skill p{
+section div.object-skill div.box{
     width: 300px;
-    height: 250px;
+    min-height: 250px;
     background-color: white;
    
-    padding: 20px;
-    color: black;
     text-align: justify;
+    padding: 20px;
     box-shadow: 5px 5px 10px black;
     border-bottom: 3px solid white;
 }
 
-section div.object-skill p:hover {
+ul {
+    padding: 5px 20px;
+}
+
+li {
+    padding: 5px 0px;
+}
+
+div.content > p {
+    color: white;
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+div.flex p {
+    padding: 0px;
+    color: black;
+    text-align: center;
+}
+
+a{
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+// section div.object-skill p{
+//     width: 300px;
+//     height: 250px;
+//     background-color: white;
+   
+//     padding: 20px;
+//     color: black;
+//     text-align: justify;
+//     box-shadow: 5px 5px 10px black;
+//     border-bottom: 3px solid white;
+// }
+
+section div.object-skill div.box:hover {
     border-bottom: 3px solid red;
     transition: ease-in-out 0.3s;
 }
