@@ -1,34 +1,20 @@
-<!-- # Serveless API AWS 
-This repository demonstrates a simple project showcasing how to create an API in AWS using Terraform + FastAPI + Pytest + ECR + JWT.
+# Personal website using Angular and automatic deploy on AWS with terraform
 
-There is a freely accessible endpoint at "/", but all others require authentication using a bearer JWT.
+This repository demonstrates a simple project showcasing how I created my own site using Angular, HTML5, CSS3, SASS and made
+automatic deployment on AWS using [Terraform](https://www.terraform.io/).
 
-Verifique se tem a versão instalada do terraform, se não tiver. Instale-a usando
+In terraform, the following resources are used
+- CloudFront for CDN Service
+- Route53 for DNS service so that I can use own domain
+- S3 for static hosting  
+- ACM for management of SSL/TLS certificates
+- IAM for minimum privileges applied
 
-https://github.com/tfutils/tfenv
-
-tfenv list
-
-tfenv use 1.7.1
-
-terraform init
-
-terraform validate
-
-
-To generate static files
-REquirements
-terraform versions
-Recommended to use tfenv to manage terraform versions accross many projects
-
-REcommended to use nvm
-Use a nvm use v20. ?
-ng build  --base-href 'https://aih.dev.br'
-
-
-To deploy a new version of the site 
-plan and apply
-Remember to clear the browser cache when updating the page or use an incognito tab to test the redeploys
+Although this repository has Terraform files, this project aims to apply the subjects learned  into the following course playlists:
+- [Curso HTML5 e CSS3.- Módulo 1 de 5 - Curso em Vídeo](https://www.youtube.com/playlist?list=PLHz_AreHm4dkZ9-atkcmcBaMZdmLHft8n)
+- [Curso HTML5 e CSS3.- Módulo 2 de 5 - Curso em Vídeo](https://www.youtube.com/playlist?list=PLHz_AreHm4dlUpEXkY1AyVLQGcpSgVF8s)
+- [Curso HTML5 e CSS3.- Módulo 3 de 5 - Curso em Vídeo](https://www.youtube.com/playlist?list=PLGoULRt59zHtHG1tQUjucsOmeqiwo2FWr)
+- [Curso HTML5 e CSS3.- Módulo 4 de 5 - Curso em Vídeo](https://www.youtube.com/playlist?list=PLHz_AreHm4dkcVCk2Bn_fdVQ81Fkrh6WT)
 
 ## AWS Infrastructure
 
@@ -39,53 +25,34 @@ export AWS_SECRET_ACCESS_KEY=""
 export REGION=""
 ```
 
-To automate the provision of the resources, [terraform](https://www.terraform.io/) is utilized. 
+## Requirements
 
-Typically, in a software development lifecycle, it is recommended to have separate `dev` and `prod` environments. To view available workspaces, use:
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.0.
+
+First of use the terraform script, check if you have the specified terraform version, which is 1.7.1.
+It is recommended to manage terraform versions across many projects using [tfenv](https://github.com/tfutils/tfenv).
+With tfenv installed, use:
 
 ```shell
-$ terraform workspace list
-```
-If a workspace has not been previously created, you can create a new one:
-```shell
-$ terraform workspace new dev
+tfenv use 1.7.1
+terraform init
+terraform validate
 ```
 
-and then, select the desired workspace (in this case is dev):
+To manage Node across many projects, it is recommended to use [nvm](https://github.com/nvm-sh/nvm).
+With nvm installed, run
+
 ```shell
-$ terraform workspace select dev
+nvm use v20.11.1
 ```
 
-### Creating
-Use the following command to create an execution plan:
-```shell
-$ terraform plan -out="tfplan.out"
-```
-Finally, provision all coded infrastructure using:
-```shell
-$ terraform apply
-```
+and then run the [deploy.sh](deploy.sh) script to deploy a new version of the website on AWS.
 
-### Updates in API (REDEPLOY)
-The `plan` and `apply` commands of Terraform automatically verify updates in the api code and redeploy them as a new version to the ECR as the latest image to be used by Lambda. 
+Remember to clear the browser cache when updating the page or use an incognito tab to test the redeploys.
 
 
 ### Destroying
-Be aware that using the command bellow, `ALL` resources created by terraform code will be destroyied:
+Be aware that using the command bellow, `ALL` resources created by terraform code will be destroyed:
 ```shell
-$ terraform destroy
+terraform destroy
 ```
-
-## Tests
-To veriry if the api is working correctlly, use the following command:
-```shell
-$ pytest
-```
-
-Ensure that all dependencies located in [requirements.txt](api/requirements.txt) are installled.
-
-## Docs
-The documentation endpoin is freely accessible as well; no JWT authentication is necessary.
-Access the application address using the endpoint `docs`, for example, `https:test.amazonaws.us-east-1/docs`, and observe how FastAPI generates an awesome Swagger Documentation on its own.
-
- -->
