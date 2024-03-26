@@ -1,4 +1,4 @@
-# Personal website using Angular and automatic deploy on AWS with terraform
+# Personal website using Angular and automatic deployment on AWS with terraform
 
 This repository demonstrates a simple project showcasing how I created my own site using Angular, HTML5, CSS3, SASS and made
 automatic deployment on AWS using [Terraform](https://www.terraform.io/).
