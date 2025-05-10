@@ -8,6 +8,8 @@ import { Component } from '@angular/core';
   styleUrl: './timeline.component.scss'
 })
 export class TimelineComponent {
+  azureFundCertLink: String = "https://learn.microsoft.com/en-us/users/hiagodossantosrabelo-4597/transcript/vpe0ncw0l25e5ge";
+
   devCertLink: String = "https://www.credly.com/badges/8337e18e-1ba8-4d19-876f-a602fff1b5be";
   
   arcCertLink: String = "https://www.credly.com/badges/8147d80d-a2a2-4c40-bb07-a1c2d3ffa078?trk=feed_main-feed-card_feed-article-content";
@@ -19,6 +21,8 @@ export class TimelineComponent {
   unbLink: String = "https://www.unb.br/";
 
   finalCourseLink: String = "https://drive.google.com/file/d/1oI_TSVDzcUcDAE0RUhX-F7PRbZAwKGyR/view?usp=drive_link";
+
+  objectiveLink: String = "https://www.objective.com.br/";
 
   rmLink: String = "https://radiomemory.com.br/";
 

@@ -34,3 +34,4 @@ resource "aws_route53_record" "www" {
     zone_id                = var.hosted_zone_id
   }
 }
+

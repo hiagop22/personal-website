@@ -1,5 +1,5 @@
 terraform {
-  required_version = "1.7.1"
+  required_version = "1.11.1"
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -23,10 +23,10 @@ provider "aws" {
 }
 
 module "s3" {
-  source       = "./s3"
-  domain       = var.domain
+  source         = "./s3"
+  domain         = var.domain
   web_build_path = var.web_build_path
-  web_root_path = var.web_root_path
+  web_root_path  = var.web_root_path
 }
 
 module "acm" {
@@ -45,11 +45,11 @@ module "cloudfront" {
 }
 
 module "route53" {
-  source         = "./route53"
-  domain         = var.domain
-  has_domain     = local.has_domain
-  hosted_zone_id = module.cloudfront.zone_id
-  domain_name    = module.cloudfront.domain_name
+  source                    = "./route53"
+  domain                    = var.domain
+  has_domain                = local.has_domain
+  hosted_zone_id            = module.cloudfront.zone_id
+  domain_name               = module.cloudfront.domain_name
 }
 
 module "iam" {

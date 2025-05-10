@@ -130,7 +130,7 @@ li {
 
 
 
-ul:not(.aws) li::before {
+ul:not(.certifications) li::before {
     // box-sizing: border-box;
     content: "";
     position: absolute;
@@ -142,12 +142,12 @@ ul:not(.aws) li::before {
     border-width: 2px 0 0 2px;
 }
 
-ul:not(.aws) li:last-child::before {
+ul:not(.certifications) li:last-child::before {
     border-width: 2px 0 0;
     border-left: 2px solid transparent;
 }
 
-ul:not(.aws) li::after{
+ul:not(.certifications) li::after{
     box-sizing: border-box;
     content: "";
     @include nonAwsLinkImg();
@@ -158,7 +158,7 @@ ul:not(.aws) li::after{
 
 
 
-ul.aws li::after{
+ul.certifications li::after{
     box-sizing: border-box;
     content: "";
     @include awsLinkImg();
@@ -167,8 +167,9 @@ ul.aws li::after{
 
 
 $imgs: "etb", "unb", "maratona", "mat", 
-       "unball", "pibic", "cnpq", "rm",
-       "cert-practitioner", "cert-architect", "cert-developer";
+       "unball", "pibic", "cnpq", "rm", "objective",
+       "cert-practitioner", "cert-architect", 
+       "cert-developer", "cert-azurefundamentals";
 @each $img in $imgs {
   li##{$img}::after {
     background: url(../../../assets/timeline/#{$img}.png) no-repeat;
@@ -176,28 +177,28 @@ $imgs: "etb", "unb", "maratona", "mat",
     }
 }
 
-ul:not(.aws) a.img {
+ul:not(.certifications) a.img {
     box-sizing: border-box;
     @include linkBlock();
     @include nonAwsLinkImg();
     border-radius: 50%;
 }
 
-ul:not(.aws) a.img:hover{
+ul:not(.certifications) a.img:hover{
     border: 3px solid $color6;
     z-index: 1;
 }
 
-ul.aws a.img {
+ul.certifications a.img {
     @include linkBlock();
     @include awsLinkImg();
 }
 
 
-ul.aws li a {
+ul.certifications li a {
     text-decoration: none;
 }
 
-ul.aws li a:hover {
+ul.certifications li a:hover {
     text-decoration: underline;
 }
