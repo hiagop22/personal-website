@@ -8,6 +8,8 @@ import { Component } from '@angular/core';
   styleUrl: './timeline.component.scss'
 })
 export class TimelineComponent {
+  azureAssocCertLink: String = "https://learn.microsoft.com/en-us/users/hiagodossantosrabelo-4597/transcript/vpe0ncw0l25e5ge";
+
   azureFundCertLink: String = "https://learn.microsoft.com/en-us/users/hiagodossantosrabelo-4597/transcript/vpe0ncw0l25e5ge";
 
   devCertLink: String = "https://www.credly.com/badges/8337e18e-1ba8-4d19-876f-a602fff1b5be";

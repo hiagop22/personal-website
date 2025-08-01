@@ -169,7 +169,8 @@ ul.certifications li::after{
 $imgs: "etb", "unb", "maratona", "mat", 
        "unball", "pibic", "cnpq", "rm", "objective",
        "cert-practitioner", "cert-architect", 
-       "cert-developer", "cert-azurefundamentals";
+       "cert-developer", "cert-azurefundamentals",
+       "cert-azureassociate";
 @each $img in $imgs {
   li##{$img}::after {
     background: url(../../../assets/timeline/#{$img}.png) no-repeat;
