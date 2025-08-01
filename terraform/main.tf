@@ -14,7 +14,7 @@ provider "aws" {
   region  = var.aws_region
   default_tags {
     tags = {
-      Project      = "AWS com Terraform"
+      Project      = "AWS with Terraform"
       Service      = "Static Website"
       CreatedAt    = "2024-03-16"
     }
