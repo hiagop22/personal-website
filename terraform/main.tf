@@ -17,7 +17,6 @@ provider "aws" {
       Project      = "AWS com Terraform"
       Service      = "Static Website"
       CreatedAt    = "2024-03-16"
-      LastUpdateAt = formatdate("YYYY-MM-DD", timestamp())
     }
   }
 }
