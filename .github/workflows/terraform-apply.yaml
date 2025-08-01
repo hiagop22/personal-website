@@ -33,7 +33,7 @@ jobs:
           ***Running terraform apply***
           Results will display here momentarily...
     - name: Checkout Repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
