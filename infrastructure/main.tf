@@ -6,7 +6,12 @@ terraform {
       version = "5.34.0"
     }
   }
-  # backend "s3" {}
+  backend "s3" {
+    bucket         = "backend-aihdev"
+    key            = "static-website/terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "terraform-locks" 
+  }
 }
 
 provider "aws" {
