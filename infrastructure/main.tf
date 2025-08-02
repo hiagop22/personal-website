@@ -10,7 +10,7 @@ terraform {
     bucket         = "backend-aihdev"
     key            = "static-website/terraform.tfstate"
     region         = "us-east-1"
-    dynamodb_table = "terraform-locks" 
+    use_lockfile   = true
   }
 }
 
