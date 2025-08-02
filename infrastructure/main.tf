@@ -3,18 +3,22 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "5.34.0"
+      version = "6.7.0"
     }
   }
-  # backend "s3" {}
+  backend "s3" {
+    bucket         = "backend-aihdev"
+    key            = "static-website/terraform.tfstate"
+    region         = "us-east-1"
+    use_lockfile   = true
+  }
 }
 
 provider "aws" {
-  profile = var.aws_profile
   region  = var.aws_region
   default_tags {
     tags = {
-      Project      = "AWS com Terraform"
+      Project      = "AWS with Terraform"
       Service      = "Static Website"
       CreatedAt    = "2024-03-16"
     }
