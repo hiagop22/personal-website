@@ -18,6 +18,11 @@ jobs:
   infra_plan:
     name: 'Terraform Plan'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+      repository-projects: write
     defaults:
       run:
         shell: bash
