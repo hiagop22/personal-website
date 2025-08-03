@@ -6,11 +6,11 @@ on:
       - master
     paths:
       - infrastructure/**
-  workflow_dispatch:
+  workflow_dispatch: {}
 
 env:
-  AWS_ACCESS_KEY_ID: ${{ env.AWS_ACCESS_KEY_ID }}
-  AWS_SECRET_ACCESS_KEY: ${{ env.AWS_SECRET_ACCESS_KEY }}
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   AWS_REGION: us-east-1
 
 jobs:
@@ -20,7 +20,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: ./infrastructure
+        working-directory: infrastructure
 
     steps:
     
