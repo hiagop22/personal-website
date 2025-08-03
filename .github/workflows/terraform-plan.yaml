@@ -13,11 +13,11 @@ env:
   
 jobs:
   build_angular:
-    uses: .github/workflows/build-angular.yaml
+    uses: ./.github/workflows/build-angular.yaml
 
   infra_plan:
     name: 'Terraform Plan'
-    needs: build_website
+    needs: build_angular
     runs-on: ubuntu-latest
     defaults:
       run:
