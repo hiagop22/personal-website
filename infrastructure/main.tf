@@ -6,11 +6,15 @@ terraform {
       version = "5.34.0"
     }
   }
-  # backend "s3" {}
+  backend "s3" {
+    bucket         = "backend-aihdev"
+    key            = "static-website/terraform.tfstate"
+    region         = "us-east-1"
+    use_lockfile   = true
+  }
 }
 
 provider "aws" {
-  profile = var.aws_profile
   region  = var.aws_region
   default_tags {
     tags = {
