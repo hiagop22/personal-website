@@ -13,14 +13,41 @@ env:
   
 jobs:
 
+  build_website:
+    name: 'Build Website'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: website
+        
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.11.1'
+    
+    - name: Install Angular CLI
+      run: npm install -g @angular/cli@19.0.6
+
+    - name: Install Website Dependencies
+      run: npm install
+    
+    - name: Build Angular App
+      run: ng build --base-href "https://aih.dev.br/"
+
   infra_plan:
     name: 'Terraform Plan'
+    needs: build_website
     runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
         working-directory: infrastructure
-        
+
     steps:
     - name: Checkout Repo
       uses: actions/checkout@v3
