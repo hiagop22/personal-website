@@ -12,38 +12,8 @@ env:
   AWS_REGION: us-east-1
   
 jobs:
-  build_website:
-    name: 'Build Website'
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
-        working-directory: website
-        
-    steps:
-    - name: Checkout Repo
-      uses: actions/checkout@v3
-
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20.11.1'
-    
-    - name: Install Angular CLI
-      run: npm install -g @angular/cli@19.0.6
-
-    - name: Install Website Dependencies
-      run: npm install
-    
-    - name: Build Angular App
-      run: ng build --base-href "https://aih.dev.br/"
-
-    - name: Upload build
-      uses: actions/upload-artifact@v4
-      with:
-        name: angular-build
-        path: website/dist
-        retention-days: 1
+  build_angular:
+    uses: .github/workflows/build-angular.yaml
 
   infra_plan:
     name: 'Terraform Plan'
@@ -58,7 +28,7 @@ jobs:
     - name: Checkout Repo
       uses: actions/checkout@v3
 
-    - name: Download Angular build (if needed)
+    - name: Download Angular build
       uses: actions/download-artifact@v4
       with:
         name: angular-build
