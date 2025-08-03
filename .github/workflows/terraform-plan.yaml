@@ -15,7 +15,7 @@ jobs:
   build_angular:
     uses: ./.github/workflows/build-angular.yaml
 
-  infra_plan:
+  terraform_plan:
     name: 'Terraform Plan'
     needs: build_angular
     runs-on: ubuntu-latest
@@ -103,3 +103,8 @@ jobs:
             repo: context.repo.repo,
             body: output
           })
+
+  clean_up:
+    uses: ./.github/workflows/clean-up.yaml
+    needs: [build_angular, terraform_plan]
+    if: always()

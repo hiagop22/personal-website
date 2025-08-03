@@ -1,0 +1,15 @@
+name: Clean-up
+
+on:
+  workflow_call:
+
+jobs:
+  clean_up:
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Delete Artifact
+        uses: geekyeggo/delete-artifact@v5
+        with:
+          name: "*"
+          failOnError: false
