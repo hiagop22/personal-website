@@ -1,60 +1,103 @@
-# Personal website using Angular and automatic deployment on AWS with terraform
+# Personal website using Angular and automatic deployment on AWS with Terraform and Github Actions
 
-This repository demonstrates a simple project showcasing how I created my own site using Angular, HTML5, CSS3, SASS and made
-automatic deployment on AWS using [Terraform](https://www.terraform.io/).
+This repository contains my personal website site built using **Angular, HTML5, CSS3, SASS**, with fully **automated CI/CD deployment to AWS** via **GitHub Actions** and [Terraform](https://www.terraform.io/).
 
 🌐 Check out my personal website [https://aih.dev.br/](https://aih.dev.br/)!
 
-In terraform, the following resources are used
-- CloudFront for CDN Service
-- Route53 for DNS service so that I can use own domain
-- S3 for static hosting  
-- ACM for management of SSL/TLS certificates
-- IAM for minimum privileges applied
+## 🚀 CI/CD with GitHub Actions
+All infrastructure planning and application are automated using **GitHub Actions**. The workflow includes:
 
-Although this repository has Terraform files, this project aims to apply the subjects learned  into the following course playlists:
+- Building the Angular app via: [build-angular.yaml](.github/workflows/build-angular.yaml)
+- Planning infrastructure changes using **Terraform**
+- Applying infrastructure on merge to `master`: [terraform-apply.yaml](.github/workflows/terraform-apply.yaml)
+- Uploading and cleaning up artifacts: [clean-up.yaml](.github/workflows/clean-up.yaml)
+- Reusing jobs across workflows to keep things DRY
+
+✅ No more local scripts or manual `bash` commands — the deployment pipeline is now fully managed in the cloud. All the workflows can be found in [.github/workflows/](.github/workflows/)
+
+
+## ✅ Best Practices Followed
+- **Commit conventions:** commits should be clear and meaningful (e.g., `fix: broken S3 config`, `feat: enable gzip in CloudFront`)
+- **Reusable workflows:** common tasks like building Angular or cleaning up artifacts are abstracted into separate workflow files (`workflow_call`) and reused across jobs
+Artifact cleanup: builds are automatically cleaned up post-deployment to avoid bloated storage and unnecessary retention
+- **Branch-based automation:** 
+    - `pull_request` triggers a Terraform plan for review
+    - `push` to `master` triggers deployment
+- **Secure secrets:** AWS credentials are stored using GitHub Secrets and passed through the environment securely
+Conditional job execution: cleanup and reporting jobs use `if: always()` to ensure proper execution even on failure
+
+
+## 🧱 AWS Infrastructure
+Using Terraform, the following AWS services are provisioned:
+
+- **S3** - static hosting for the Angular site
+- **CloudFront** - global CDN distribution
+- **Route53** - DNS routing for custom domain
+- **ACM** - automatic HTTPS via SSL certificates
+- **IAM** - scoped permissions for secure access
+
+## 📚 Learning Goals
+While Terraform is used for infrastructure, this project is primarily a **learning exercise** combining frontend development and DevOps concepts. It's part of my hands-on practice from:
+
 - [Curso HTML5 e CSS3.- Módulo 1 de 5 - Curso em Vídeo](https://www.youtube.com/playlist?list=PLHz_AreHm4dkZ9-atkcmcBaMZdmLHft8n)
 - [Curso HTML5 e CSS3.- Módulo 2 de 5 - Curso em Vídeo](https://www.youtube.com/playlist?list=PLHz_AreHm4dlUpEXkY1AyVLQGcpSgVF8s)
 - [Curso HTML5 e CSS3.- Módulo 3 de 5 - Curso em Vídeo](https://www.youtube.com/playlist?list=PLGoULRt59zHtHG1tQUjucsOmeqiwo2FWr)
 - [Curso HTML5 e CSS3.- Módulo 4 de 5 - Curso em Vídeo](https://www.youtube.com/playlist?list=PLHz_AreHm4dkcVCk2Bn_fdVQ81Fkrh6WT)
 
-## AWS Infrastructure
 
-First of all, export your AWS credentials to your shell using:
-```shell
-export AWS_ACCESS_KEY_ID=""
-export AWS_SECRET_ACCESS_KEY=""
-export REGION=""
-```
+## 🧰 Requirements (for local development)
 
-## Requirements
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.0.
+To run the project locally:
 
-First of use the terraform script, check if you have the specified terraform version, which is 1.7.1.
-It is recommended to manage terraform versions across many projects using [tfenv](https://github.com/tfutils/tfenv).
-With tfenv installed, use:
+**1.** Use [nvm](https://github.com/nvm-sh/nvm) to manage Node versions:
+With nvm installed, run
+
+```shell
+nvm use v20.11.1
+npm install
+ng serve
+```
+
+**2.**  Configure AWS Credentials
+To allow Terraform to interact with AWS, you must provide valid credentials. You can do this in two ways:
+
+**✅ Option A: Using environment variables**
+
+```shell
+export AWS_ACCESS_KEY_ID="your-access-key"
+export AWS_SECRET_ACCESS_KEY="your-secret-key"
+export AWS_REGION="us-east-1"
+```
+**✅ Option B: Using the AWS CLI and credentials file**
+Ensure you’ve installed and configured the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html), then run:
+
+```shell
+aws configure
+```
+This creates a `~/.aws/credentials` file that Terraform and other tools will use by default.
+
+**⚠️ Never commit AWS credentials** or `.aws` **folders to version control** — always use `.gitignore`.
+
+**3.** Use [tfenv](https://github.com/tfutils/tfenv) to manage Terraform:
 
 ```shell
 tfenv use 1.7.1
 terraform init
 terraform validate
+terraform plan -out=tfplan.out
+terraform apply tfplan.out
 ```
 
-To manage Node across many projects, it is recommended to use [nvm](https://github.com/nvm-sh/nvm).
-With nvm installed, run
-
-```shell
-nvm use v20.11.1
-```
-
-and then run the [deploy.sh](deploy.sh) script to deploy a new version of the website on AWS.
-
-Remember to clear the browser cache when updating the page or use an incognito tab to test the redeploys.
+💡 `terraform plan -out=tfplan.out` creates an executable plan file that you can later apply with `terraform apply tfplan.out`. This helps separate the planning and execution steps, reducing risks during production changes.
 
 
-### Destroying
-Be aware that using the command bellow, `ALL` resources created by terraform code will be destroyed:
-```shell
+**3.** Destroy infrastructure (🔥 DANGER ZONE):
+
+To remove all resources deployed via Terraform, run:
+
+```bash
 terraform destroy
 ```
+This will **permanently delete everything**, including S3 buckets, CloudFront distributions, and DNS records.
