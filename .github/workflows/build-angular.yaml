@@ -1,0 +1,38 @@
+name: Build Angular App
+
+on:
+  workflow_call:
+
+jobs:
+  build_angular:
+    name: 'Build Angular'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: website
+        
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.11.1'
+    
+    - name: Install Angular CLI
+      run: npm install -g @angular/cli@19.0.6
+
+    - name: Install Website Dependencies
+      run: npm install
+    
+    - name: Build Angular App
+      run: ng build --base-href "https://aih.dev.br/"
+
+    - name: Upload build
+      uses: actions/upload-artifact@v4
+      with:
+        name: angular-build
+        path: website/dist
+        retention-days: 1

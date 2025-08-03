@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - master
-    paths:
-      - infrastructure/**
-  workflow_dispatch: {}
 
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -14,8 +11,12 @@ env:
   AWS_REGION: us-east-1
 
 jobs:
-  terraform-apply:
+  build_angular:
+    uses: ./.github/workflows/build-angular.yaml
+
+  terraform_apply:
     name: "Terraform Apply"
+    needs: build_angular
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -32,8 +33,15 @@ jobs:
         message: |
           ***Running terraform apply***
           Results will display here momentarily...
+
     - name: Checkout Repo
       uses: actions/checkout@v3
+    
+    - name: Download Angular build
+      uses: actions/download-artifact@v4
+      with:
+        name: angular-build
+        path: website/dist
 
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v3
@@ -54,6 +62,7 @@ jobs:
       run: |
         echo '${{ steps.plan.outputs.stdout || steps.plan.outputs.stderr }}' \
         | sed -E 's/^([[:space:]]+)([-+])/\2\1/g' > plan.txt          
+
     - name: Put Plan in Env Var
       if: steps.plan.outcome == 'success'
       run: |
@@ -61,6 +70,7 @@ jobs:
         echo "PLAN<<EOF" >> $GITHUB_ENV
         echo "$PLAN" >> $GITHUB_ENV
         echo "EOF" >> $GITHUB_ENV 
+
     - name: Terraform Apply
       id: apply
       continue-on-error: true
@@ -80,6 +90,7 @@ jobs:
           ${{ steps.apply.outputs.stdout }}
           ```
           </details>
+
     - name: Post Plan Failure
       if: steps.plan.outcome == 'failure'
       uses: mshick/add-pr-comment@v1
@@ -93,6 +104,7 @@ jobs:
           ${{ steps.plan.outputs.stderr }}
           ```
           </details>
+
     - name: Post Apply Failure
       if: steps.apply.outcome == 'failure'
       uses: mshick/add-pr-comment@v1
@@ -106,3 +118,8 @@ jobs:
           ${{ steps.apply.outputs.stderr }}
           ```
           </details>
+
+  clean_up:
+    uses: ./.github/workflows/clean-up.yaml
+    needs: [build_angular, terraform_apply]
+    if: always()
