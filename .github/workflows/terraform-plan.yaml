@@ -4,8 +4,6 @@ on:
   pull_request:
     branches:
       - master
-    paths:
-      - infrastructure/**
   workflow_dispatch:
 
 env:
@@ -18,6 +16,7 @@ jobs:
   infra_plan:
     name: 'Terraform Plan'
     runs-on: ubuntu-latest
+
     defaults:
       run:
         shell: bash
@@ -66,7 +65,7 @@ jobs:
           *Pusher: @${{ github.actor }}, Action: \`${{ github.event_name }}\`, Workflow: \`${{ github.workflow }}\`*`;
             
           github.rest.issues.createComment({
-            issue_number: context.issue.number,
+            issue_number: context.payload.pull_request.number,
             owner: context.repo.owner,
             repo: context.repo.repo,
             body: output
@@ -91,7 +90,7 @@ jobs:
           *Pusher: @${{ github.actor }}, Action: \`${{ github.event_name }}\`, Workflow: \`${{ github.workflow }}\`*`;
             
           github.rest.issues.createComment({
-            issue_number: context.issue.number,
+            issue_number: context.payload.pull_request.number,
             owner: context.repo.owner,
             repo: context.repo.repo,
             body: output

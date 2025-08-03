@@ -10,5 +10,5 @@ cd website
 ng build  --base-href "https://${DOMAIN}"
 cd ..
 cd infrastructure
-terraform plan -out="tfplan.out"
-terraform apply "tfplan.out"
+# terraform plan -out="tfplan.out"
+# terraform apply "tfplan.out"
