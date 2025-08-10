@@ -27,6 +27,20 @@ Artifact cleanup: builds are automatically cleaned up post-deployment to avoid b
 Conditional job execution: cleanup and reporting jobs use `if: always()` to ensure proper execution even on failure
 
 
+## ✅ GitHub Actions Best Practices Followed
+In addition to the CI/CD pipeline setup, this repository follows key GitHub Actions best practices for security, reliability, and performance:
+
+- **Workflow timeouts** – All jobs have `timeout-minutes` set to prevent stuck builds.
+- **Concurrency control** – Normally used to cancel in-progress jobs when a newer one is triggered, but **not applied here** to avoid conflicts with Terraform's state locking mechanism.
+- **Restricted permissions** – Workflows explicitly request only the minimal GitHub token permissions required (`contents: read`).
+- **Pinned action versions** – All actions are pinned to commit SHAs instead of floating tags for security and reproducibility.
+- **Trusted third-party actions** – Only actions from trusted maintainers are used, and dependencies are evaluated before adoption.
+- **Versioned runners** – Workflows run on `ubuntu-22.04` instead of `ubuntu-latest` to avoid unexpected environment changes.
+- **Secure secrets management** – AWS credentials and other sensitive data are stored in GitHub Encrypted Secrets and scoped to necessary workflows.
+- **Dependency caching** – No separate actions/cache step is configured for npm dependencies, because actions/setup-node v4 is already used with its built-in caching mechanism.
+- **Readable YAML** – Workflow files are organized, and reusable jobs are centralized to keep pipelines maintainable.
+
+
 ## 🧱 AWS Infrastructure
 Using Terraform, the following AWS services are provisioned:
 
@@ -93,7 +107,7 @@ terraform apply tfplan.out
 💡 `terraform plan -out=tfplan.out` creates an executable plan file that you can later apply with `terraform apply tfplan.out`. This helps separate the planning and execution steps, reducing risks during production changes.
 
 
-**3.** Destroy infrastructure (🔥 DANGER ZONE):
+**4.** Destroy infrastructure (🔥 DANGER ZONE):
 
 To remove all resources deployed via Terraform, run:
 

@@ -5,11 +5,12 @@ on:
 
 jobs:
   clean_up:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
     if: always()
     steps:
       - name: Delete Artifact
-        uses: geekyeggo/delete-artifact@v5
+        uses: geekyeggo/delete-artifact@f275313e70c08f6120db482d7a6b98377786765b
         with:
           name: "*"
           failOnError: false
