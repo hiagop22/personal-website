@@ -69,9 +69,10 @@ To run the project locally:
 With nvm installed, run
 
 ```shell
+nvm install v20.11.1
 nvm use v20.11.1
 npm install
-ng serve
+ng run ng serve
 ```
 
 **2.**  Configure AWS Credentials
