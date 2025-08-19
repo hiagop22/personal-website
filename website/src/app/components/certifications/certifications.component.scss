@@ -1,13 +1,19 @@
 @import "variables";
 
+h3 {
+    color: black;
+}
+
+section div.content {
+    background-color: rgba(212, 210, 210, 0.972);
+}
+
 :host {
     --img-size: 110px;
     --outside-line: 25px;
     --padding-content: 5px 0 50px calc(var(--img-size) + var(--outside-line) + 10px);
 }
 
-
-$back-color: rgba(128, 128, 128, 0.231);
 $gray-circle: rgba(0, 0, 0, 0.616);
 
 @media (max-width: $phone-width)  {
@@ -57,15 +63,6 @@ $gray-circle: rgba(0, 0, 0, 0.616);
     color: black;
 }
 
-section {
-    background-color: white;
-    min-height: 100%;
-}
-
-div.content {
-    background-color: $back-color;
-}
-
 @media (min-width: $phone-width)  {
 
     ul {
@@ -82,13 +79,6 @@ h3.sub {
     padding-bottom: 25px;
     padding-top: 0px;
     text-decoration: underline $color3 2px;
-}
-
-h3.sub::before {
-    content: "•";
-    margin-right: 0.5em;
-    color: $gray-circle;
-    display:inline-block;
 }
 
 h4 a {
@@ -109,14 +99,6 @@ h5 a:hover , h4 a:hover {
     text-decoration: underline;
 }
 
-
-span::after {
-    content: " •";
-    margin-left: 0.5em;
-    margin-right: 0.5em;
-    color: $gray-circle;
-}
-
 hr {
     margin-bottom: 50px;
 }
@@ -128,42 +110,13 @@ li {
     text-align: left;
 }
 
-
-
-ul:not(.certifications) li::before {
-    content: "";
-    position: absolute;
-    left: calc(var(--img-size) / 2);
-    top: calc(var(--img-size) / 2);
-    width: calc(var(--img-size) /2 + var(--outside-line));
-    height: 999px;
-    border: 2px solid $color2;
-    border-width: 2px 0 0 2px;
-}
-
-ul:not(.certifications) li:last-child::before {
-    border-width: 2px 0 0;
-    border-left: 2px solid transparent;
-}
-
-ul:not(.certifications) li::after{
-    box-sizing: border-box;
-    content: "";
-    @include nonAwsLinkImg();
-    border: 2px solid $color2;
-    border-radius: 50%;
-    z-index: 0;
-}
-
 ul.certifications li::after{
     box-sizing: border-box;
     content: "";
     @include awsLinkImg();
 }
 
-$imgs: "etb", "unb", "maratona", "mat", 
-       "unball", "pibic", "cnpq", "rm", "objective",
-       "cert-practitioner", "cert-architect", 
+$imgs: "cert-practitioner", "cert-architect", 
        "cert-developer", "cert-azurefundamentals",
        "cert-azureassociate";
 @each $img in $imgs {
@@ -171,18 +124,6 @@ $imgs: "etb", "unb", "maratona", "mat",
     background: url(../../../assets/timeline/#{$img}.png) no-repeat;
     @include func($img);
     }
-}
-
-ul:not(.certifications) a.img {
-    box-sizing: border-box;
-    @include linkBlock();
-    @include nonAwsLinkImg();
-    border-radius: 50%;
-}
-
-ul:not(.certifications) a.img:hover{
-    border: 3px solid $color6;
-    z-index: 1;
 }
 
 ul.certifications a.img {
