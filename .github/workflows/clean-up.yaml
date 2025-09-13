@@ -1,7 +1,8 @@
 name: Clean-up
 
 on:
-  workflow_call:
+  workflow_call: {}
+  workflow_dispatch: {}
 
 jobs:
   clean_up:
