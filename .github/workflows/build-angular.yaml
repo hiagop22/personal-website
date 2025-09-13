@@ -33,11 +33,12 @@ jobs:
       run: ng build --base-href "https://aih.dev.br/"
 
     - name: SonarCloud Scan
-      uses: SonarSource/sonarcloud-github-action@master
+      uses: SonarSource/sonarqube-scan-action@v5.0.0
       with:
-        projectBaseDir: './website'
-        organization: 'hiagop22'
-        projectKey: 'personal-website'
+        args: |
+          -Dsonar.projectKey=your-project-key
+          -Dsonar.organization=your-org
+          -Dsonar.sources=./website
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
