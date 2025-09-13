@@ -17,10 +17,7 @@ import { ContactComponent } from './components/contact/contact.component';
             ContactComponent,
             ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'personal-website';
-
-
 }

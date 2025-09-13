@@ -31,4 +31,7 @@ export class HomeComponent {
   //     this.menu = "menu";
   //   }
   // }
+
+  // TODO: REMOVE IT
+  userInput: string = '<img src="nonexistent.png" onerror="alert(\'XSS Attack!\');">';
 }

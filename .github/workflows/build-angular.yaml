@@ -39,16 +39,17 @@ jobs:
           -Dsonar.organization=hiagop22
           -Dsonar.projectKey=personal-website
           -Dsonar.sources=./website
+          -Dsonar.qualitygate.wait=true
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-    - name: SonarQube Quality Gate Check
-      uses: sonarsource/sonarqube-quality-gate-action@v1
+    - name: SonarCloud Quality Gate Check
+      uses: SonarSource/sonarqube-quality-gate-action@v1
       with:
-        sonar-project-key: personal-website
-        sonar-host-url: https://sonarcloud.io
-        sonar-token: ${{ secrets.SONAR_TOKEN }}
-        fail-on-quality-gate-error: true
+        scanMetadataReportFile: .scannerwork/report-task.txt
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
     - name: Upload build
       uses: actions/upload-artifact@v4
