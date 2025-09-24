@@ -32,14 +32,14 @@ jobs:
     - name: Build Angular App
       run: ng build --base-href "https://aih.dev.br/"
 
-    - name: SonarCloud Scan
-      uses: SonarSource/sonarcloud-github-action@master
-      with:
-        projectBaseDir: './website'
-        organization: 'hiagop22'
-        projectKey: 'personal-website'
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    # - name: SonarCloud Scan
+    #   uses: SonarSource/sonarcloud-github-action@master
+    #   with:
+    #     projectBaseDir: './website'
+    #     organization: 'hiagop22'
+    #     projectKey: 'personal-website'
+    #   env:
+    #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
     - name: Upload build
       uses: actions/upload-artifact@v4
