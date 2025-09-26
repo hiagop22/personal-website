@@ -1,7 +1,12 @@
-name: Force Unlock Terraform State
+name: Terraform Unlock
 
 on:
   workflow_dispatch:
+    inputs:
+      lock_id:
+        description: 'Terraform state lock ID to force-unlock'
+        required: true
+        type: string
 
 jobs:
   unlock:
