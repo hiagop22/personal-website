@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './certifications.component.scss'
 })
 export class CertificationsComponent {
+  gcpACECertLink: String = "https://www.credly.com/badges/717e4570-53a0-4015-bb15-c1e0439b65b0/linked_in?t=t5zvn7";
   azureAssocCertLink: String = "https://learn.microsoft.com/en-us/users/hiagodossantosrabelo-4597/transcript/vpe0ncw0l25e5ge";
   azureFundCertLink: String = "https://learn.microsoft.com/en-us/users/hiagodossantosrabelo-4597/transcript/vpe0ncw0l25e5ge";
   devCertLink: String = "https://www.credly.com/badges/8337e18e-1ba8-4d19-876f-a602fff1b5be";
