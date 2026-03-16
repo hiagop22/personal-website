@@ -18,6 +18,22 @@ resource "aws_s3_bucket_website_configuration" "website" {
   }
 }
 
+resource "aws_s3_object" "placeholder_index" {
+  bucket = aws_s3_bucket.website.id
+  key    = "index.html"
+
+  content = "<html><body><h1>Website not deployed yet</h1></body></html>"
+
+  content_type = "text/html"
+
+  lifecycle {
+    ignore_changes = [
+      content,
+      source,
+      etag
+    ]
+  }
+}
 
 resource "aws_s3_bucket_public_access_block" "website" {
   bucket = aws_s3_bucket.website.id
