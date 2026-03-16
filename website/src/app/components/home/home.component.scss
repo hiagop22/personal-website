@@ -135,7 +135,8 @@ header h4 {
 
 header p {
     margin: auto;
-    width: 350px;
+    width: fit-content;
+    max-width: 90vw;
     border-bottom: 1px $color2 solid;
     padding: 10px 0px;
     color: $color1;
@@ -182,6 +183,10 @@ div.cert-container:hover img:hover {
         padding-top: 60px;
     }
     
+    header p {
+        width: 400px;
+        max-width: 100%;
+    }
 
     header img.cert {
         width: 80px;

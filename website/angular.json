@@ -35,10 +35,10 @@
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
-                   "src/sass",
-                   "src/assets"
-                  ]
-                  },
+                "src/sass",
+                "src/assets"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
@@ -103,11 +103,23 @@
         },
         "deploy": {
           "builder": "angular-cli-ghpages:deploy"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
   "cli": {
-    "analytics": false
+    "analytics": false,
+    "schematicCollections": [
+      "angular-eslint"
+    ]
   }
 }
