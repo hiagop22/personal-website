@@ -48,15 +48,44 @@ Workflows are also configured to run **only when changes are detected in specifi
     Example behavior:
     ```
     Pull Request opened
-    ↓
+        ↓
     ci.yaml
-    ↓
+        ↓
     Detect changed paths
-    ↓
+        ↓
     infrastructure/** → infrastructure-ci.yaml
     website/** → website-ci.yaml
     ```
 
+    Because some jobs run conditionally, the pipeline also includes a final aggregation step called final_status.
+
+    This job collects the results of all pipelines triggered by the orchestrator and produces a single deterministic CI result used by GitHub branch protection rules.
+
+    This guarantees that:
+
+    - If any triggered pipeline fails, the CI fails.
+    - If a pipeline is skipped because no relevant files changed, the CI still succeeds.
+    - Branch protection rules can rely on one consistent status check.
+    
+    The final execution flow looks like this:
+    ```
+        Pull Request opened
+            ↓
+        ci.yaml
+            ↓
+        detect_changes
+            ↓
+    ┌──────────────────────────────┐
+    ↓                              ↓
+    website_ci               infrastructure_ci
+    ↓                              ↓
+    └───────────┬──────────────────┘
+                ↓
+            final_status
+    ```
+
+    The final_status job is configured as the required status check in the repository’s branch protection rules, ensuring that pull requests can only be merged once all relevant CI pipelines have completed successfully.
+    
 All infrastructure planning and application are automated using **GitHub Actions**. 
 The pipeline is designed to separate **infrastructure pipelines** and **application pipelines**, while keeping workflows reusable and maintainable.
 
