@@ -1,6 +1,6 @@
 // import { NgClass } from '@angular/common';
 import { NgIf, NgStyle } from '@angular/common';
-import { Component, ElementRef } from '@angular/core';
+import { Component } from '@angular/core';
 
 // declare const angular: any;
 
@@ -14,21 +14,4 @@ import { Component, ElementRef } from '@angular/core';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  constructor(){}
-
-  // menu: string = "menu";
-  // menuIsClicked: boolean = false;
-
-  ngOnInit(): void{};
-
-  // myFunc() {
-  //   this.menuIsClicked = !this.menuIsClicked;
-
-  //   if(this.menuIsClicked){
-  //     this.menu ="close";
-  //   }
-  //   else {
-  //     this.menu = "menu";
-  //   }
-  // }
 }
