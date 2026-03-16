@@ -1,0 +1,20 @@
+name: Website CI
+
+on:
+  pull_request:
+    branches:
+      - master
+    paths:
+      - 'website/**'
+
+jobs:
+  build_angular:
+    uses: ./.github/workflows/build-angular.yaml
+    with:
+      working-directory: website
+      base-href: https://aih.dev.br/
+
+  clean_up:
+    uses: ./.github/workflows/clean-up.yaml
+    needs: [build_angular]
+    if: always()

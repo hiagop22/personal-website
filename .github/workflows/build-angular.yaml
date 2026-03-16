@@ -1,7 +1,14 @@
 name: Build Angular App
 
 on:
-  workflow_call: {}
+  workflow_call:
+    working-directory:
+      required: true
+      type: string
+    base-href:
+      required: true
+      type: string
+
   workflow_dispatch: {}
 
 jobs:
@@ -12,7 +19,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: website
+        working-directory: ${{ inputs.working-directory }}
         
     steps:
     - name: Checkout Repo
@@ -22,15 +29,25 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '20.11.1'
+        cache: npm
+        cache-dependency-path: ${{ inputs.working-directory }}/package-lock.json
     
     - name: Install Angular CLI
       run: npm install -g @angular/cli@19.0.6
 
-    - name: Install Website Dependencies
+    - name: Install Dependencies
       run: npm install
     
-    - name: Build Angular App
-      run: ng build --base-href "https://aih.dev.br/"
+    - name: Lint
+      if: inputs.run-lint
+      run: npx ng lint
+
+    - name: Run Tests
+      if: inputs.run-tests
+      run: npx ng test --watch=false --browsers=ChromeHeadless
+
+    - name: Build Angular
+      run: npx ng build --base-href "${{ inputs.base-href }}"
 
     # - name: SonarCloud Scan
     #   uses: SonarSource/sonarcloud-github-action@master
@@ -45,5 +62,5 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: angular-build
-        path: website/dist
+        path: ${{ inputs.working-directory }}/dist
         retention-days: 1
