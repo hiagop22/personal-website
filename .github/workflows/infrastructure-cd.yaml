@@ -1,4 +1,4 @@
-name: 'Terraform Apply'
+name: 'infrastructure CD'
 
 on:
   push:
@@ -11,9 +11,6 @@ env:
   AWS_REGION: us-east-1
 
 jobs:
-  build_angular:
-    uses: ./.github/workflows/build-angular.yaml
-
   terraform_apply:
     name: "Terraform Apply"
     needs: build_angular
@@ -25,7 +22,6 @@ jobs:
         working-directory: infrastructure
 
     steps:
-    
     - name: Inform on PR that Apply is Running
       uses: mshick/add-pr-comment@v1
       with:
@@ -37,12 +33,6 @@ jobs:
 
     - name: Checkout Repo
       uses: actions/checkout@v3
-    
-    - name: Download Angular build
-      uses: actions/download-artifact@v4
-      with:
-        name: angular-build
-        path: website/dist
 
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v3
@@ -119,8 +109,3 @@ jobs:
           ${{ steps.apply.outputs.stderr }}
           ```
           </details>
-
-  clean_up:
-    uses: ./.github/workflows/clean-up.yaml
-    needs: [build_angular, terraform_apply]
-    if: always()

@@ -1,4 +1,4 @@
-name: 'Terraform Plan'
+name: 'infrastructure CI'
 
 on:
   pull_request:
@@ -12,9 +12,6 @@ env:
   AWS_REGION: us-east-1
   
 jobs:
-  build_angular:
-    uses: ./.github/workflows/build-angular.yaml
-
   terraform_plan:
     name: 'Terraform Plan'
     needs: build_angular
@@ -28,12 +25,6 @@ jobs:
     steps:
     - name: Checkout Repo
       uses: actions/checkout@v3
-
-    - name: Download Angular build
-      uses: actions/download-artifact@v4
-      with:
-        name: angular-build
-        path: website/dist
 
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v3
@@ -104,8 +95,3 @@ jobs:
             repo: context.repo.repo,
             body: output
           })
-
-  clean_up:
-    uses: ./.github/workflows/clean-up.yaml
-    needs: [build_angular, terraform_plan]
-    if: always()

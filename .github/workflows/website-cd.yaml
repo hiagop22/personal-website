@@ -1,0 +1,55 @@
+name: Website CD
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'website/**'
+
+env:
+  AWS_REGION: us-east-1
+  S3_BUCKET: aih.dev.br
+
+jobs:
+
+  build_angular:
+    uses: ./.github/workflows/build-angular.yaml
+    with:
+      working-directory: website
+      base-href: https://aih.dev.br/
+
+  deploy:
+    name: Deploy to S3
+    needs: build_angular
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Download Angular Build
+        uses: actions/download-artifact@v4
+        with:
+          name: angular-build
+          path: dist
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+      - name: Verify bucket exists
+        run: |
+          aws s3api head-bucket --bucket ${{ env.S3_BUCKET }} \
+          || (echo "Bucket not found. Deploy infrastructure first." && exit 1)
+          
+      - name: Upload to S3
+        run: |
+          aws s3 sync dist/ s3://${{ env.S3_BUCKET }} --delete
+    
+  clean_up:
+    uses: ./.github/workflows/clean-up.yaml
+    needs: [build_angular, deploy]
+    if: always()
