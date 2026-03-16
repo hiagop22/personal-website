@@ -1,19 +1,66 @@
 # Personal website using Angular and automatic deployment on AWS with Terraform and Github Actions
 
+[![CI](https://github.com/hiagop22/personal-website/actions/workflows/ci.yaml/badge.svg)](https://github.com/hiagop22/personal-website/actions/workflows/ci.yaml)
+
 This repository contains my personal website site built using **Angular, HTML5, CSS3, SASS**, with fully **automated CI/CD deployment to AWS** via **GitHub Actions** and [Terraform](https://www.terraform.io/).
 
 🌐 Check out my personal website [https://aih.dev.br/](https://aih.dev.br/)!
 
 ## 🚀 CI/CD with GitHub Actions
-All infrastructure planning and application are automated using **GitHub Actions**. The workflow includes:
 
-- Building the Angular app via: [build-angular.yaml](.github/workflows/build-angular.yaml)
-- Planning infrastructure changes using **Terraform**
-- Applying infrastructure on merge to `master`: [terraform-apply.yaml](.github/workflows/terraform-apply.yaml)
-- Uploading and cleaning up artifacts: [clean-up.yaml](.github/workflows/clean-up.yaml)
-- Reusing jobs across workflows to keep things DRY
+The repository separates **infrastructure pipelines** and **application pipelines**.  
+Workflows are also configured to run **only when changes are detected in specific folders**, avoiding unnecessary builds and speeding up the pipeline.
 
-✅ No more local scripts or manual `bash` commands — the deployment pipeline is now fully managed in the cloud. All the workflows can be found in [.github/workflows/](.github/workflows/)
+- **Terraform infrastructure CI**
+
+    When a pull request modifies files in the `infrastructure/` folder, **Terraform** runs a `plan` so infrastructure changes can be reviewed before merging via [`infrastructure-ci.yaml`](.github/workflows/infrastructure-ci.yaml).
+
+- **Terraform infrastructure CD**
+
+    When infrastructure code is merged to `master`, the workflow applies the Terraform changes via [`infrastructure-cd.yaml`](.github/workflows/infrastructure-cd.yaml).
+
+- **Angular build workflow**
+
+    The Angular project build is implemented as a **reusable workflow** so it can be shared across multiple pipelines while keeping the configuration **DRY (Don't Repeat Yourself)** via [`build-angular.yaml`](.github/workflows/build-angular.yaml).
+
+- **Website CI**
+
+    The Angular application is automatically built and validated on pull requests when changes are detected in the `website/` folder.  
+    This ensures the project compiles successfully before merging via [`website-ci.yaml`](.github/workflows/website-ci.yaml).
+
+- **Website CD**
+
+    After changes to the website are merged to `master`, the Angular application is built and uploaded to AWS S3 via [`website-cd.yaml`](.github/workflows/website-cd.yaml).
+
+- **Main CI orchestrator**
+
+    A top-level workflow [`ci.yaml`](.github/workflows/ci.yaml) acts as an **entry point for pull request pipelines**.  
+
+    It exists primarily to support **GitHub branch protection status checks**, which require a consistent workflow to report the CI status for every pull request.
+
+    Since the repository uses **path-based triggers**, the workflows [`infrastructure-ci.yaml`](.github/workflows/infrastructure-ci.yaml) and [`website-ci.yaml`](.github/workflows/website-ci.yaml) only run when changes are detected in their respective folders (`infrastructure/` or `website/`).  
+    Because of this behavior, neither of them can reliably be used as a required **status check**, as they may not run at all for some pull requests.
+
+    The orchestrator solves this by always running on pull requests and then evaluating which parts of the repository were modified before triggering the appropriate workflows.
+  
+    This keeps the CI configuration **DRY**, avoids duplicated trigger logic across workflows, and ensures that only the necessary pipelines run.
+
+    Example behavior:
+    ```
+    Pull Request opened
+    ↓
+    ci.yaml
+    ↓
+    Detect changed paths
+    ↓
+    infrastructure/** → infrastructure-ci.yaml
+    website/** → website-ci.yaml
+    ```
+
+All infrastructure planning and application are automated using **GitHub Actions**. 
+The pipeline is designed to separate **infrastructure pipelines** and **application pipelines**, while keeping workflows reusable and maintainable.
+
+✅ No more local scripts or manual `bash` commands for deploys — the deployment pipeline is now fully managed in the cloud. All the workflows can be found in [.github/workflows/](.github/workflows/)
 
 
 ## ✅ Best Practices Followed
@@ -59,23 +106,46 @@ While Terraform is used for infrastructure, this project is primarily a **learni
 - [Curso HTML5 e CSS3.- Módulo 4 de 5 - Curso em Vídeo](https://www.youtube.com/playlist?list=PLHz_AreHm4dkcVCk2Bn_fdVQ81Fkrh6WT)
 
 
-## 🧰 Requirements (for local development)
+## 🧰 Requirements (for local website development)
 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.0.
-To run the project locally:
 
-**1.** Use [nvm](https://github.com/nvm-sh/nvm) to manage Node versions:
+To simplify local development and avoid needing to push commits or trigger the CI/CD pipeline just to verify changes, this repository includes a helper script:
+
+[`website/local.sh`](website/local.sh)
+
+This script builds and serves the project locally in a way that closely mirrors the production configuration, allowing quick feedback during development.
+
+
+### 1. Install Node using NVM
+
+Use [nvm](https://github.com/nvm-sh/nvm) to manage Node versions:
 With nvm installed, run
 
 ```shell
 nvm install v20.11.1
 nvm use v20.11.1
 npm install
-ng run ng serve
 ```
 
-**2.**  Configure AWS Credentials
+### 2. Run the website locally
+
+Instead of manually running Angular commands each time, you can start the local development environment using:
+
+[`website/local.sh`](website/local.sh)
+
+This script handles the necessary steps to start the Angular development server so you can preview the website locally without needing to deploy changes to AWS or merge branches.
+
+The website will be available at:
+
+http://localhost:4200
+
+This makes it easier to iterate quickly and verify changes before committing or triggering the CI/CD pipeline.
+
+## 🧰 Requirements (for local infrastructure development)
+
+### Credentials
 To allow Terraform to interact with AWS, you must provide valid credentials. You can do this in two ways:
 
 **✅ Option A: Using environment variables**
