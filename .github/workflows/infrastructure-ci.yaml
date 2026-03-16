@@ -1,12 +1,7 @@
 name: 'infrastructure CI'
 
 on:
-  pull_request:
-    branches:
-      - master
-    paths:
-      - 'infrastructure/**'
-  workflow_dispatch: {}
+  workflow_call: {}
 
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
