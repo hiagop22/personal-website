@@ -21,4 +21,3 @@ variable "web_root_path" {
   description = ""
   default     = "../website"
 }
-
