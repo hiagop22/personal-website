@@ -13,8 +13,3 @@ jobs:
     with:
       working-directory: website
       base-href: https://aih.dev.br/
-
-  clean_up:
-    uses: ./.github/workflows/clean-up.yaml
-    needs: [build_angular]
-    if: always()
