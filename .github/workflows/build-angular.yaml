@@ -2,12 +2,13 @@ name: Build Angular App
 
 on:
   workflow_call:
-    working-directory:
-      required: true
-      type: string
-    base-href:
-      required: true
-      type: string
+    inputs:
+      working-directory:
+        required: true
+        type: string
+      base-href:
+        required: true
+        type: string
 
   workflow_dispatch: {}
 
