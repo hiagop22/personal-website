@@ -48,8 +48,3 @@ jobs:
       - name: Upload to S3
         run: |
           aws s3 sync dist/ s3://${{ env.S3_BUCKET }} --delete
-    
-  clean_up:
-    uses: ./.github/workflows/clean-up.yaml
-    needs: [build_angular, deploy]
-    if: always()
