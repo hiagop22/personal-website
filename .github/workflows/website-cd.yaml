@@ -47,5 +47,5 @@ jobs:
           
       - name: Upload to S3
         run: |
-          BUILD_DIR=$(find dist -mindepth 1 -maxdepth 1 -type d)
+          BUILD_DIR=$(find dist -mindepth 2 -maxdepth 2 -type d -name browser)
           aws s3 sync "$BUILD_DIR" s3://${{ env.S3_BUCKET }} --delete
