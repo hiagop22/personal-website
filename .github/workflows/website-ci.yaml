@@ -1,11 +1,7 @@
 name: Website CI
 
 on:
-  pull_request:
-    branches:
-      - master
-    paths:
-      - 'website/**'
+  workflow_call: {}
 
 jobs:
   build_angular:
