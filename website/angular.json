@@ -30,8 +30,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/sass/styles.scss",
-              "src/sass/_variables.scss"
+              "src/sass/styles.scss"
             ],
             "stylePreprocessorOptions": {
               "includePaths": [

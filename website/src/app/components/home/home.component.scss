@@ -1,4 +1,4 @@
-@import "variables";
+@use "../../../sass/variables" as *;
 
 header {
     // background: linear-gradient(to top, $color5, rgba(255, 255, 255, 0.044)), url(../../../assets/pexels-photo-13618459.jpeg);
@@ -157,16 +157,18 @@ header img.cert {
 }
 
 
-div.cert-container:hover img:not(:hover) {
-    filter: blur(2px);
-    z-index: 0;
-    position: relative;
-}
+@media (hover: hover) and (pointer: fine) {
+    div.cert-container:hover img:not(:hover) {
+        filter: blur(2px);
+        z-index: 0;
+        position: relative;
+    }
 
-div.cert-container:hover img:hover {
-    transform: scale(1.2);
-    position: relative;
-    z-index: 1;
+    div.cert-container:hover img:hover {
+        transform: scale(1.2);
+        position: relative;
+        z-index: 1;
+    }
 }
 
 
